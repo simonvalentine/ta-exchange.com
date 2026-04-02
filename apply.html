@@ -14,7 +14,310 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+/* ===== TA Exchange Shared Styles ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #333; line-height: 1.6; overflow-x: hidden; background: #fff;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+:root {
+  --primary: #5B5FC7;
+  --primary-dark: #4A4EB5;
+  --primary-light: #7175D4;
+  --dark: #1a1a2e;
+  --white: #ffffff;
+  --gray-light: #f7f7fa;
+  --gray: #666;
+  --gray-border: #e5e5e5;
+  --text: #333;
+  --max-width: 1280px;
+  --danger: #dc3545;
+  --success: #28a745;
+}
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 30px; }
+.accent { color: var(--primary); }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-block; background: var(--primary); color: var(--white);
+  padding: 14px 36px; border-radius: 4px; font-weight: 600; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.3s;
+  border: 2px solid var(--primary); cursor: pointer; font-family: inherit;
+}
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-outline {
+  display: inline-block; background: transparent; color: var(--primary);
+  padding: 14px 36px; border-radius: 4px; font-weight: 600; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase; border: 2px solid var(--primary);
+  transition: all 0.3s; cursor: pointer; font-family: inherit;
+}
+.btn-outline:hover { background: var(--primary); color: var(--white); }
+.btn-sm { padding: 8px 20px; font-size: 12px; }
+.btn-danger { background: var(--danger); border-color: var(--danger); color: white; }
+.btn-danger:hover { background: #c82333; border-color: #c82333; }
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky; top: 0; z-index: 1000; background: var(--white);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06); padding: 12px 0;
+}
+.header .container { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.logo { display: flex; align-items: center; flex-shrink: 0; }
+.logo img { height: 40px; width: auto; }
+.main-nav { display: flex; gap: 28px; align-items: center; }
+.main-nav a { font-weight: 500; color: #555; font-size: 15px; transition: color 0.3s; position: relative; }
+.main-nav a:hover, .main-nav a.active { color: var(--primary); }
+.main-nav a.active::after {
+  content: ''; position: absolute; bottom: -16px; left: 0; right: 0;
+  height: 3px; background: var(--primary); border-radius: 2px;
+}
+.header-right { display: flex; align-items: center; gap: 20px; }
+.search-icon { font-size: 18px; color: #555; cursor: pointer; transition: color 0.3s; }
+.search-icon:hover { color: var(--primary); }
+.header-signin { font-weight: 500; color: #555; transition: color 0.3s; }
+.header-signin:hover { color: var(--primary); }
+.header-signup {
+  background: var(--dark); color: #ffffff !important; padding: 10px 24px;
+  border-radius: 4px; font-weight: 600; font-size: 14px; transition: background 0.3s;
+}
+.header-signup:hover { background: #333; }
+.header-user { display: flex; align-items: center; gap: 10px; cursor: pointer; position: relative; }
+.header-avatar img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.header-username { font-weight: 500; font-size: 14px; color: #333; }
+.header-dropdown {
+  display: none; position: absolute; top: 100%; right: 0; background: white;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12); border-radius: 8px; padding: 8px 0;
+  min-width: 200px; z-index: 100; margin-top: 10px;
+}
+.header-dropdown a {
+  display: flex; align-items: center; gap: 10px; padding: 10px 20px;
+  font-size: 14px; color: #333; transition: background 0.2s;
+}
+.header-dropdown a:hover { background: var(--gray-light); color: var(--primary); }
+.header-dropdown hr { border: none; border-top: 1px solid #eee; margin: 4px 0; }
+.header-user:hover .header-dropdown { display: block; }
+.mobile-toggle { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--dark); color: rgba(255,255,255,0.8); padding: 60px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand .logo img { height: 36px; margin-bottom: 15px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; opacity: 0.7; margin-bottom: 20px; }
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center; transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--primary); }
+.footer-links h4 { color: white; font-size: 16px; margin-bottom: 16px; }
+.footer-links a { display: block; font-size: 14px; opacity: 0.7; padding: 4px 0; transition: opacity 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--primary-light); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 13px; opacity: 0.5; }
+
+/* ===== PAGE HERO BANNER ===== */
+.page-hero {
+  background: linear-gradient(135deg, #4A4EB5 0%, #6B6FD6 50%, #7B7FE0 100%);
+  padding: 60px 0; text-align: center; color: white; position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L55 17.5V42.5L30 55L5 42.5V17.5L30 5z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+.page-hero h1 { font-size: 48px; font-weight: 800; position: relative; z-index: 1; }
+.page-hero p { font-size: 16px; opacity: 0.85; margin-top: 12px; position: relative; z-index: 1; }
+
+/* ===== CARDS ===== */
+.card {
+  background: white; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+.card-image { width: 100%; height: 200px; object-fit: cover; }
+.card-body { padding: 24px; }
+.card-tag {
+  display: inline-block; background: var(--primary); color: white;
+  padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.card-title { font-size: 20px; font-weight: 700; margin: 12px 0 8px; color: var(--dark); }
+.card-text { font-size: 14px; color: var(--gray); line-height: 1.6; }
+.card-meta { display: flex; align-items: center; gap: 16px; margin-top: 16px; font-size: 13px; color: var(--gray); }
+.card-meta i { color: var(--primary); }
+
+/* ===== GRID LAYOUTS ===== */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ===== FORM STYLES ===== */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--dark); }
+.form-group label .required { color: var(--danger); }
+.form-input {
+  width: 100%; padding: 12px 16px; border: 2px solid var(--gray-border); border-radius: 8px;
+  font-size: 15px; font-family: inherit; transition: border-color 0.3s; background: white;
+}
+.form-input:focus { outline: none; border-color: var(--primary); }
+.form-input::placeholder { color: #aaa; }
+textarea.form-input { resize: vertical; min-height: 100px; }
+select.form-input { cursor: pointer; appearance: auto; }
+.form-error { color: var(--danger); font-size: 13px; margin-top: 4px; }
+.form-help { color: var(--gray); font-size: 12px; margin-top: 4px; }
+
+/* ===== ALERT MESSAGES ===== */
+.alert {
+  padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;
+}
+.alert-error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+.alert-success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+.alert-info { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+
+/* ===== MEMBER AVATAR ===== */
+.avatar-circle {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
+  display: flex; align-items: center; justify-content: center; color: white;
+  font-weight: 600; font-size: 16px; overflow: hidden; flex-shrink: 0;
+}
+.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== ACTIVITY FEED ===== */
+.activity-post {
+  background: white; border-radius: 12px; padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 16px;
+}
+.activity-post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.activity-post-author { font-weight: 600; font-size: 15px; color: var(--dark); }
+.activity-post-meta { font-size: 12px; color: var(--gray); }
+.activity-post-content { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+.activity-post-actions { display: flex; gap: 24px; padding-top: 12px; border-top: 1px solid #f0f0f0; }
+.activity-post-actions button {
+  background: none; border: none; color: var(--gray); font-size: 13px;
+  cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: inherit;
+  transition: color 0.2s;
+}
+.activity-post-actions button:hover { color: var(--primary); }
+
+/* ===== COMPOSE BOX ===== */
+.compose-box {
+  background: white; border-radius: 12px; padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 24px;
+}
+.compose-box textarea {
+  width: 100%; border: 2px solid var(--gray-border); border-radius: 8px;
+  padding: 14px; font-size: 15px; font-family: inherit; resize: vertical;
+  min-height: 80px; transition: border-color 0.3s;
+}
+.compose-box textarea:focus { outline: none; border-color: var(--primary); }
+.compose-box-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.compose-box-footer select {
+  padding: 8px 12px; border: 1px solid var(--gray-border); border-radius: 6px;
+  font-size: 13px; font-family: inherit;
+}
+
+/* ===== SIDEBAR ===== */
+.page-layout { display: grid; grid-template-columns: 1fr 320px; gap: 30px; padding: 40px 0; }
+.page-layout-wide { display: grid; grid-template-columns: 280px 1fr; gap: 30px; padding: 40px 0; }
+.sidebar-card {
+  background: white; border-radius: 12px; padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 20px;
+}
+.sidebar-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--dark); }
+.sidebar-member { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+.sidebar-member-name { font-weight: 500; font-size: 14px; }
+.sidebar-member-role { font-size: 12px; color: var(--gray); }
+
+/* ===== PROFILE PAGE ===== */
+.profile-header {
+  background: linear-gradient(135deg, #4A4EB5, #7B7FE0); padding: 40px 0; position: relative;
+}
+.profile-header-inner { display: flex; align-items: flex-end; gap: 24px; position: relative; z-index: 1; }
+.profile-avatar {
+  width: 120px; height: 120px; border-radius: 50%; border: 4px solid white;
+  overflow: hidden; background: var(--primary); display: flex; align-items: center;
+  justify-content: center; color: white; font-size: 48px; font-weight: 700; flex-shrink: 0;
+}
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.profile-info { color: white; padding-bottom: 8px; }
+.profile-info h1 { font-size: 32px; font-weight: 800; margin-bottom: 4px; }
+.profile-info p { opacity: 0.85; font-size: 15px; }
+.profile-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--gray-border); margin-bottom: 30px; }
+.profile-tabs a {
+  padding: 14px 24px; font-weight: 600; font-size: 14px; color: var(--gray);
+  border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.3s;
+}
+.profile-tabs a:hover, .profile-tabs a.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+/* ===== MEMBERS GRID ===== */
+.member-card {
+  background: white; border-radius: 12px; padding: 24px; text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: transform 0.3s;
+}
+.member-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.member-card-avatar { margin: 0 auto 16px; }
+.member-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.member-card p { font-size: 13px; color: var(--gray); }
+
+/* ===== SECTION SPACING ===== */
+.section { padding: 60px 0; }
+.section-title { font-size: 36px; font-weight: 800; margin-bottom: 16px; color: var(--dark); }
+.section-subtitle { font-size: 16px; color: var(--gray); max-width: 600px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-layout, .page-layout-wide { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  .main-nav.open { display: flex; }
+  .main-nav a.active::after { display: none; }
+  .mobile-toggle { display: block; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr; }
+  .page-hero h1 { font-size: 32px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .profile-header-inner { flex-direction: column; align-items: center; text-align: center; }
+  .header-username { display: none; }
+}
+
+/* ===== MISC ===== */
+.text-center { text-align: center; }
+.text-muted { color: var(--gray); }
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 40px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mb-4 { margin-bottom: 40px; }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-2 { gap: 16px; }
+.gap-3 { gap: 24px; }
+
+/* ===== LOADING ===== */
+.loading { text-align: center; padding: 60px; color: var(--gray); }
+.loading i { font-size: 32px; color: var(--primary); animation: spin 1s linear infinite; margin-bottom: 16px; display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== EMPTY STATE ===== */
+.empty-state { text-align: center; padding: 60px 20px; }
+.empty-state i { font-size: 48px; color: #ddd; margin-bottom: 16px; }
+.empty-state h3 { font-size: 20px; color: var(--dark); margin-bottom: 8px; }
+.empty-state p { color: var(--gray); font-size: 14px; }
+    </style>
 
     <style>
         /* Registration-specific styles */
@@ -614,7 +917,379 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/auth.js"></script>
+    <script>
+/* ===== TA Exchange Auth System (localStorage) ===== */
+const TAAuth = (() => {
+  const STORAGE_KEY = 'taex_users';
+  const SESSION_KEY = 'taex_session';
+
+  // Seed demo users on first load
+  function seedDemoUsers() {
+    if (localStorage.getItem(STORAGE_KEY)) return;
+    const demoUsers = [
+      {
+        id: 'simon-valentine',
+        email: 'simon@ta.exchange',
+        password: 'demo123',
+        firstName: 'Simon',
+        lastName: 'Valentine',
+        role: 'Leader',
+        linkedin: 'https://www.linkedin.com/in/simoncvalentine/',
+        avatar: 'https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/IMG_5290.jpg',
+        bio: 'Founder of TA Exchange. Passionate about building communities that help Talent Acquisition professionals grow.',
+        company: 'TA Exchange',
+        title: 'Founder',
+        joined: '2021-12-01',
+        groups: ['ta-community', 'ta-manager', 'ta-leader', 'ta-now', 'employer-branding', 'talent-attraction'],
+        connections: ['victoria-murphy', 'genevive-calib']
+      },
+      {
+        id: 'victoria-murphy',
+        email: 'victoria@ta.exchange',
+        password: 'demo123',
+        firstName: 'Victoria',
+        lastName: 'Murphy',
+        role: 'Leader',
+        linkedin: 'https://www.linkedin.com/in/victoriamurphy/',
+        avatar: 'https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/1615530323697-300x300.jpeg',
+        bio: 'Senior Talent Acquisition Leader with 15+ years of experience in global recruiting strategy.',
+        company: 'Global Corp',
+        title: 'VP, Talent Acquisition',
+        joined: '2022-01-15',
+        groups: ['ta-community', 'ta-leader', 'employer-branding'],
+        connections: ['simon-valentine', 'genevive-calib']
+      },
+      {
+        id: 'genevive-calib',
+        email: 'genevive@ta.exchange',
+        password: 'demo123',
+        firstName: 'Genevive',
+        lastName: 'Calib',
+        role: 'Individual Contributor',
+        linkedin: 'https://www.linkedin.com/in/genevivecalib/',
+        avatar: '',
+        bio: 'Talent Acquisition Specialist passionate about candidate experience and employer branding.',
+        company: 'Tech Innovations',
+        title: 'Senior Recruiter',
+        joined: '2022-03-10',
+        groups: ['ta-community', 'ta-now', 'talent-attraction'],
+        connections: ['simon-valentine', 'victoria-murphy']
+      }
+    ];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(demoUsers));
+  }
+
+  function getUsers() {
+    seedDemoUsers();
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  }
+
+  function saveUsers(users) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  }
+
+  function login(email, password) {
+    const users = getUsers();
+    const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
+    if (user) {
+      const session = { userId: user.id, email: user.email, name: user.firstName + ' ' + user.lastName, avatar: user.avatar, loggedInAt: Date.now() };
+      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+      return { success: true, user };
+    }
+    return { success: false, error: 'Invalid email or password.' };
+  }
+
+  function register(data) {
+    const users = getUsers();
+    if (users.find(u => u.email.toLowerCase() === data.email.toLowerCase())) {
+      return { success: false, error: 'An account with this email already exists.' };
+    }
+    const id = (data.firstName + '-' + data.lastName).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const newUser = {
+      id,
+      email: data.email,
+      password: data.password,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      role: data.role || 'Individual Contributor',
+      linkedin: data.linkedin || '',
+      avatar: '',
+      bio: '',
+      company: '',
+      title: '',
+      joined: new Date().toISOString().split('T')[0],
+      groups: ['ta-community'],
+      connections: []
+    };
+    users.push(newUser);
+    saveUsers(users);
+    // Auto login
+    const session = { userId: newUser.id, email: newUser.email, name: newUser.firstName + ' ' + newUser.lastName, avatar: newUser.avatar, loggedInAt: Date.now() };
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    return { success: true, user: newUser };
+  }
+
+  function logout() {
+    localStorage.removeItem(SESSION_KEY);
+    window.location.href = 'login.html';
+  }
+
+  function getSession() {
+    const data = localStorage.getItem(SESSION_KEY);
+    return data ? JSON.parse(data) : null;
+  }
+
+  function getCurrentUser() {
+    const session = getSession();
+    if (!session) return null;
+    const users = getUsers();
+    return users.find(u => u.id === session.userId) || null;
+  }
+
+  function getUserById(id) {
+    const users = getUsers();
+    return users.find(u => u.id === id) || null;
+  }
+
+  function getAllMembers() {
+    return getUsers();
+  }
+
+  function updateProfile(id, updates) {
+    const users = getUsers();
+    const idx = users.findIndex(u => u.id === id);
+    if (idx === -1) return false;
+    Object.assign(users[idx], updates);
+    saveUsers(users);
+    return true;
+  }
+
+  function requireAuth() {
+    if (!getSession()) {
+      window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+      return false;
+    }
+    return true;
+  }
+
+  function isLoggedIn() {
+    return !!getSession();
+  }
+
+  // Initialize
+  seedDemoUsers();
+
+  return { login, register, logout, getSession, getCurrentUser, getUserById, getAllMembers, updateProfile, requireAuth, isLoggedIn };
+})();
+
+/* ===== Groups Data ===== */
+const TAGroups = [
+  {
+    id: 'ta-community',
+    name: 'TA Community',
+    tag: 'Individual',
+    image: 'https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img29.jpg',
+    description: 'A community for individual contributors in Talent Acquisition to share knowledge, ask questions, and grow together.',
+    memberCount: 247,
+    topics: 42,
+    created: '2021-12-01'
+  },
+  {
+    id: 'ta-manager',
+    name: 'TA Manager Community',
+    tag: 'Management',
+    image: 'https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img27.jpg',
+    description: 'For TA Managers looking to develop their leadership skills, share best practices, and connect with peers.',
+    memberCount: 156,
+    topics: 31,
+    created: '2021-12-01'
+  },
+  {
+    id: 'ta-leader',
+    name: 'TA Leader Community',
+    tag: 'Leaders',
+    image: 'https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img28.jpg',
+    description: 'An exclusive group for senior Talent Acquisition leaders to discuss strategy, transformation, and industry trends.',
+    memberCount: 89,
+    topics: 24,
+    created: '2021-12-01'
+  },
+  {
+    id: 'ta-now',
+    name: 'TA for NOW',
+    tag: 'For All',
+    image: 'https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img32.jpg',
+    description: 'Stay current with real-time discussions about what\'s happening in Talent Acquisition right now.',
+    memberCount: 312,
+    topics: 67,
+    created: '2022-01-15'
+  },
+  {
+    id: 'employer-branding',
+    name: 'Employer Branding',
+    tag: 'For All',
+    image: 'https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img30.jpg',
+    description: 'Dedicated to employer branding strategies, employee value propositions, and building compelling talent brands.',
+    memberCount: 198,
+    topics: 38,
+    created: '2022-01-15'
+  },
+  {
+    id: 'talent-attraction',
+    name: 'Talent Attraction',
+    tag: 'For All',
+    image: 'https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img31.jpg',
+    description: 'Explore sourcing strategies, candidate engagement techniques, and innovative approaches to attracting top talent.',
+    memberCount: 223,
+    topics: 45,
+    created: '2022-02-01'
+  }
+];
+
+/* ===== Activity Feed Data ===== */
+const TAActivity = {
+  getItems() {
+    const stored = localStorage.getItem('taex_activity');
+    if (stored) return JSON.parse(stored);
+    const defaults = [
+      { id: 1, userId: 'simon-valentine', type: 'post', group: 'ta-leader', content: 'Just published a new article on the future of AI in recruitment. Would love to hear your thoughts!', timestamp: Date.now() - 3600000 * 2, likes: 12, comments: [] },
+      { id: 2, userId: 'victoria-murphy', type: 'post', group: 'ta-community', content: 'Great discussion in today\'s webinar about candidate experience metrics. Key takeaway: NPS alone isn\'t enough.', timestamp: Date.now() - 3600000 * 5, likes: 8, comments: [] },
+      { id: 3, userId: 'simon-valentine', type: 'post', group: 'employer-branding', content: 'What EVP frameworks are you using in 2026? We\'re looking to refresh ours and want to benchmark.', timestamp: Date.now() - 3600000 * 24, likes: 15, comments: [] },
+      { id: 4, userId: 'genevive-calib', type: 'post', group: 'talent-attraction', content: 'Has anyone had success with programmatic job advertising? Looking for platform recommendations.', timestamp: Date.now() - 3600000 * 48, likes: 6, comments: [] },
+      { id: 5, userId: 'victoria-murphy', type: 'post', group: 'ta-manager', content: 'Reminder: Our monthly TA Manager roundtable is this Thursday. Topic: Hiring manager relationships.', timestamp: Date.now() - 3600000 * 72, likes: 20, comments: [] }
+    ];
+    localStorage.setItem('taex_activity', JSON.stringify(defaults));
+    return defaults;
+  },
+  addPost(userId, group, content) {
+    const items = this.getItems();
+    const newItem = { id: Date.now(), userId, type: 'post', group, content, timestamp: Date.now(), likes: 0, comments: [] };
+    items.unshift(newItem);
+    localStorage.setItem('taex_activity', JSON.stringify(items));
+    return newItem;
+  },
+  likePost(postId) {
+    const items = this.getItems();
+    const post = items.find(i => i.id === postId);
+    if (post) { post.likes++; localStorage.setItem('taex_activity', JSON.stringify(items)); }
+    return post;
+  },
+  addComment(postId, userId, text) {
+    const items = this.getItems();
+    const post = items.find(i => i.id === postId);
+    if (post) {
+      post.comments.push({ userId, text, timestamp: Date.now() });
+      localStorage.setItem('taex_activity', JSON.stringify(items));
+    }
+    return post;
+  }
+};
+
+/* ===== Shared Header Rendering ===== */
+function renderHeader(activePage) {
+  const session = TAAuth.getSession();
+  const headerRight = session
+    ? `<div class="header-user">
+         <div class="header-avatar"><img src="${session.avatar || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%2220%22 fill=%22%235B5FC7%22/%3E%3Ctext x=%2220%22 y=%2226%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22%3E${session.name.charAt(0)}%3C/text%3E%3C/svg%3E'}" alt="${session.name}"></div>
+         <span class="header-username">${session.name}</span>
+         <div class="header-dropdown">
+           <a href="profile.html?id=${session.userId}"><i class="fas fa-user"></i> My Profile</a>
+           <a href="activity.html"><i class="fas fa-stream"></i> Activity</a>
+           <a href="groups.html"><i class="fas fa-users"></i> Groups</a>
+           <a href="members.html"><i class="fas fa-address-book"></i> Members</a>
+           <hr>
+           <a href="#" onclick="TAAuth.logout(); return false;"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+         </div>
+       </div>`
+    : `<a href="login.html" class="header-signin">Sign in</a>
+       <a href="apply.html" class="header-signup">Sign up</a>`;
+
+  return `<header class="header">
+    <div class="container">
+      <a href="index.html" class="logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/talogosmallv200.png" alt="TA Exchange"></a>
+      <nav class="main-nav">
+        <a href="index.html" ${activePage==='home'?'class="active"':''}>Home</a>
+        <a href="about.html" ${activePage==='about'?'class="active"':''}>About</a>
+        <a href="groups.html" ${activePage==='groups'?'class="active"':''}>Groups</a>
+        <a href="articles.html" ${activePage==='articles'?'class="active"':''}>Articles</a>
+        <a href="members.html" ${activePage==='members'?'class="active"':''}>Members</a>
+        <a href="contact.html" ${activePage==='contact'?'class="active"':''}>Contact</a>
+      </nav>
+      <div class="header-right">
+        <i class="fas fa-search search-icon"></i>
+        ${headerRight}
+      </div>
+      <button class="mobile-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>`;
+}
+
+function renderFooter() {
+  return `<footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/talogosmallv-white.png" alt="TA Exchange"></a>
+          <p>Leading the way in Talent Acquisition. Join the community shaping the future of recruitment.</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/thetalentacquisitionexchange/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="about.html">About Us</a>
+          <a href="groups.html">Groups</a>
+          <a href="articles.html">Articles</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <a href="faq.html">FAQ</a>
+          <a href="testimonials.html">Testimonials</a>
+          <a href="careers.html">Careers</a>
+          <a href="help.html">Help</a>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 - Talent Acquisition Exchange</p>
+      </div>
+    </div>
+  </footer>`;
+}
+
+/* ===== Utility Functions ===== */
+function timeAgo(timestamp) {
+  const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  if (seconds < 60) return 'just now';
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return minutes + 'm ago';
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return hours + 'h ago';
+  const days = Math.floor(hours / 24);
+  if (days < 30) return days + 'd ago';
+  return new Date(timestamp).toLocaleDateString();
+}
+
+function getInitials(name) {
+  return name.split(' ').map(n => n.charAt(0)).join('').toUpperCase();
+}
+
+function avatarHTML(user, size) {
+  size = size || 40;
+  if (user && user.avatar) {
+    return `<img src="${user.avatar}" alt="${user.firstName}" style="width:${size}px;height:${size}px;border-radius:50%;object-fit:cover;">`;
+  }
+  const name = user ? user.firstName + ' ' + user.lastName : '?';
+  return `<div style="width:${size}px;height:${size}px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:${size*0.4}px;">${getInitials(name)}</div>`;
+}
+    </script>
     <script>
         // Multi-step form logic
         const registrationForm = document.getElementById('registrationForm');
