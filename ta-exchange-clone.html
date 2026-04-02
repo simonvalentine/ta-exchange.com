@@ -22,7 +22,6 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
-/* ===== VARIABLES ===== */
 :root {
   --primary: #5B5FC7;
   --primary-dark: #4A4EB5;
@@ -35,1085 +34,306 @@ img { max-width: 100%; display: block; }
   --max-width: 1280px;
 }
 
-/* ===== UTILITY ===== */
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 30px; }
-.section-wave {
-  display: block;
-  margin-bottom: 15px;
-  color: var(--primary);
-}
+.section-wave { display: block; margin-bottom: 15px; color: var(--primary); }
 .section-wave svg { width: 80px; height: 20px; }
 .accent { color: var(--primary); }
 .btn-primary {
-  display: inline-block;
-  background: var(--primary);
-  color: var(--white);
-  padding: 14px 36px;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  border: 2px solid var(--primary);
+  display: inline-block; background: var(--primary); color: var(--white);
+  padding: 14px 36px; border-radius: 4px; font-weight: 600; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.3s; border: 2px solid var(--primary);
 }
 .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
 .btn-outline {
-  display: inline-block;
-  background: transparent;
-  color: var(--white);
-  padding: 14px 36px;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border: 2px solid var(--white);
-  transition: all 0.3s;
+  display: inline-block; background: transparent; color: var(--white);
+  padding: 14px 36px; border-radius: 4px; font-weight: 600; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase; border: 2px solid var(--white); transition: all 0.3s;
 }
 .btn-outline:hover { background: var(--white); color: var(--primary); }
 .btn-outline-dark {
-  display: inline-block;
-  background: transparent;
-  color: var(--text);
-  padding: 14px 36px;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border: 2px solid #ccc;
-  transition: all 0.3s;
+  display: inline-block; background: transparent; color: var(--text);
+  padding: 14px 36px; border-radius: 4px; font-weight: 600; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase; border: 2px solid #ccc; transition: all 0.3s;
 }
 .btn-outline-dark:hover { border-color: var(--primary); color: var(--primary); }
 
 /* ===== HEADER ===== */
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--white);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  padding: 12px 0;
+  position: sticky; top: 0; z-index: 1000; background: var(--white);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06); padding: 12px 0;
 }
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--text);
-}
-.logo-icon {
-  background: var(--primary);
-  color: var(--white);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 20px;
-  margin-right: 4px;
-  letter-spacing: -0.5px;
-}
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.search-icon {
-  font-size: 18px;
-  color: #555;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+.header .container { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; }
+.logo img { height: 40px; width: auto; }
+.header-right { display: flex; align-items: center; gap: 20px; }
+.search-icon { font-size: 18px; color: #555; cursor: pointer; transition: color 0.3s; }
 .search-icon:hover { color: var(--primary); }
-.header-signin {
-  font-weight: 500;
-  color: #555;
-  transition: color 0.3s;
-}
+.header-signin { font-weight: 500; color: #555; transition: color 0.3s; }
 .header-signin:hover { color: var(--primary); }
 .header-signup {
-  background: var(--dark);
-  color: var(--white);
-  padding: 10px 24px;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
-  transition: background 0.3s;
+  background: var(--dark); color: var(--white); padding: 10px 24px;
+  border-radius: 4px; font-weight: 600; font-size: 14px; transition: background 0.3s;
 }
 .header-signup:hover { background: #333; }
-
-/* Mobile menu toggle */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--text);
-}
 
 /* ===== HERO ===== */
 .hero {
   background: linear-gradient(135deg, #4A4EB5 0%, #6B6FD6 50%, #7B7FE0 100%);
-  padding: 80px 0 0;
-  position: relative;
-  overflow: hidden;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
+  padding: 80px 0 0; position: relative; overflow: hidden; min-height: 600px;
+  display: flex; align-items: center;
 }
 .hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L55 17.5V42.5L30 55L5 42.5V17.5L30 5z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
   background-size: 60px 60px;
 }
 .hero .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  gap: 40px; position: relative; z-index: 1;
 }
 .hero-content { color: var(--white); }
-.hero h1 {
-  font-size: 56px;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 24px;
-}
-.hero p {
-  font-size: 16px;
-  line-height: 1.7;
-  opacity: 0.9;
-  margin-bottom: 36px;
-  max-width: 520px;
-}
+.hero h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+.hero p { font-size: 16px; line-height: 1.7; opacity: 0.9; margin-bottom: 36px; max-width: 520px; }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-}
+.hero-image { display: flex; justify-content: center; align-items: flex-end; position: relative; }
 .hero-image-circle {
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+  width: 450px; height: 450px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
 }
-.hero-image-circle .person-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-image-circle .person-placeholder i {
-  font-size: 120px;
-  color: rgba(255,255,255,0.3);
-}
+.hero-image-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ===== INTRO / ABOUT ===== */
-.about {
-  padding: 100px 0;
-  background: var(--white);
-}
-.about .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-.about-left h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-.about-left .about-text {
-  color: var(--gray);
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-.about-stat {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-}
-.about-stat-number {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--primary);
-}
-.about-stat-label {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.about-right {
-  position: relative;
-}
+/* ===== ABOUT ===== */
+.about { padding: 100px 0; background: var(--white); }
+.about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.about-left h2 { font-size: 38px; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.about-left .about-text { color: var(--gray); font-size: 15px; line-height: 1.8; margin-bottom: 30px; }
+.about-stat { display: flex; align-items: center; gap: 15px; margin-top: 30px; }
+.about-stat-number { font-size: 48px; font-weight: 800; color: var(--primary); }
+.about-stat-label { font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.about-right { position: relative; }
 .about-video {
-  width: 100%;
-  height: 350px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #2c2c54, #474787);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+  width: 100%; height: 350px; border-radius: 12px; overflow: hidden;
+  position: relative; cursor: pointer; background: #222;
 }
-.about-video::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-}
+.about-video img { width: 100%; height: 100%; object-fit: cover; }
+.about-video::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
 .play-btn {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  border: 3px solid rgba(255,255,255,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s;
+  width: 70px; height: 70px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); border: 3px solid rgba(255,255,255,0.6);
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 2; transition: transform 0.3s;
 }
-.play-btn:hover { transform: scale(1.1); }
+.play-btn:hover { transform: translate(-50%, -50%) scale(1.1); }
 .play-btn i { color: var(--white); font-size: 24px; margin-left: 4px; }
-.about-skills {
-  margin-top: 30px;
-}
-.about-skills-quote {
-  font-style: italic;
-  color: var(--primary);
-  font-size: 15px;
-  margin-bottom: 25px;
-}
-.skill-bar {
-  margin-bottom: 20px;
-}
-.skill-bar-label {
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.skill-bar-track {
-  height: 4px;
-  background: #e8e8e8;
-  border-radius: 4px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: var(--primary);
-  border-radius: 4px;
-  width: 0%;
-  transition: width 1.5s ease;
-}
+.about-skills { margin-top: 30px; }
+.about-skills-quote { font-style: italic; color: var(--primary); font-size: 15px; margin-bottom: 25px; }
+.skill-bar { margin-bottom: 20px; }
+.skill-bar-label { font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.skill-bar-track { height: 4px; background: #e8e8e8; border-radius: 4px; position: relative; display: flex; align-items: center; }
+.skill-bar-fill { height: 100%; background: var(--primary); border-radius: 4px; width: 0%; transition: width 1.5s ease; }
 .skill-bar-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 3px solid var(--primary);
-  background: var(--white);
-  position: absolute;
-  left: 0;
-  transition: left 1.5s ease;
+  width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--primary);
+  background: var(--white); position: absolute; left: 0; transition: left 1.5s ease;
 }
-.skill-bar-percent {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--gray);
-  text-align: right;
-  margin-top: 4px;
-}
+.skill-bar-percent { font-size: 13px; font-weight: 600; color: var(--gray); text-align: right; margin-top: 4px; }
 .about-skills .btn-primary { margin-top: 15px; }
 
 /* ===== TOPICS ===== */
-.topics {
-  padding: 100px 0;
-  background: var(--gray-light);
-  text-align: center;
-}
-.topics h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.topics > .container > p {
-  color: var(--gray);
-  max-width: 650px;
-  margin: 0 auto 60px;
-  font-size: 15px;
-}
-.topics-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-}
-.topics-center-image {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.topics-center-circle {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e8e8e8, #f5f5f5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.topics-center-circle i {
-  font-size: 80px;
-  color: #bbb;
-}
+.topics { padding: 100px 0; background: var(--gray-light); text-align: center; }
+.topics h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+.topics > .container > p { color: var(--gray); max-width: 650px; margin: 0 auto 60px; font-size: 15px; }
+.topics-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1100px; margin: 0 auto; }
+.topics-col-left, .topics-col-right { display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+.topics-col-center { display: flex; align-items: center; justify-content: center; }
+.topics-circle { width: 340px; height: 340px; border-radius: 50%; overflow: hidden; background: #e8e8f0; }
+.topics-circle img { width: 100%; height: 100%; object-fit: cover; }
 .topic-card {
-  background: var(--white);
-  border: 2px solid #e8e8f0;
-  border-radius: 12px;
-  padding: 24px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  transition: all 0.3s;
-  cursor: pointer;
-  margin: 8px;
+  background: var(--white); border: 2px solid #e8e8f0; border-radius: 12px;
+  padding: 24px 20px; display: flex; align-items: center; gap: 15px;
+  transition: all 0.3s; cursor: pointer;
 }
-.topic-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(91,95,199,0.12);
-}
-.topic-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #f0f0ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+.topic-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(91,95,199,0.12); }
+.topic-icon { width: 50px; height: 50px; border-radius: 50%; background: #f0f0ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .topic-icon i { color: var(--primary); font-size: 20px; }
 .topic-info { text-align: left; }
 .topic-info h4 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
 .topic-info p { font-size: 13px; color: var(--gray); }
 
-.topics-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.topics-col-left, .topics-col-right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-}
-.topics-col-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.topics-circle {
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  background: #e8e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.topics-circle i { font-size: 100px; color: #ccc; }
-
-/* JOIN NOW CTA between sections */
-.join-cta {
-  text-align: center;
-  padding: 60px 0;
-  background: var(--white);
-}
+.join-cta { text-align: center; padding: 60px 0; background: var(--white); }
 
 /* ===== GROUPS ===== */
-.groups {
-  padding: 80px 0 30px;
-  background: var(--white);
-  text-align: center;
-}
-.groups h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.groups > .container > p {
-  color: var(--gray);
-  max-width: 550px;
-  margin: 0 auto 50px;
-  font-size: 15px;
-}
-.groups-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 30px;
-}
-.group-card {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
-  background: var(--white);
-}
+.groups { padding: 80px 0 30px; background: var(--white); text-align: center; }
+.groups h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+.groups > .container > p { color: var(--gray); max-width: 550px; margin: 0 auto 50px; font-size: 15px; }
+.groups-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 30px; }
+.group-card { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s; background: var(--white); }
 .group-card:hover { transform: translateY(-5px); }
-.group-card-image {
-  height: 200px;
-  background: linear-gradient(135deg, var(--primary-light), var(--primary));
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.group-card-image i { font-size: 60px; color: rgba(255,255,255,0.4); }
-.group-card-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--primary);
-  color: var(--white);
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
+.group-card-image { height: 220px; position: relative; overflow: hidden; }
+.group-card-image img { width: 100%; height: 100%; object-fit: cover; }
+.group-card-tag { position: absolute; top: 12px; right: 12px; background: var(--primary); color: var(--white); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; z-index: 1; }
 .group-card-body { padding: 25px; }
 .group-card-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
 .group-card-body p { font-size: 14px; color: var(--gray); line-height: 1.6; }
-
-.groups-join {
-  text-align: center;
-  padding: 40px 0 60px;
-}
+.groups-join { text-align: center; padding: 40px 0 60px; }
 
 /* ===== MODERATORS ===== */
-.moderators {
-  padding: 100px 0;
-  background: var(--gray-light);
-  text-align: center;
-}
-.moderators h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.moderators > .container > p {
-  color: var(--gray);
-  max-width: 550px;
-  margin: 0 auto 60px;
-  font-size: 15px;
-}
-.moderators-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-}
+.moderators { padding: 100px 0; background: var(--gray-light); text-align: center; }
+.moderators h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+.moderators > .container > p { color: var(--gray); max-width: 550px; margin: 0 auto 60px; font-size: 15px; }
+.moderators-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
 .moderator-card { text-align: center; }
-.moderator-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #ddd;
-  margin: 0 auto 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.moderator-avatar i { font-size: 50px; color: #aaa; }
-.moderator-social {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.moderator-social a {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  transition: background 0.3s;
-}
+.moderator-avatar { width: 120px; height: 120px; border-radius: 50%; background: #ddd; margin: 0 auto 15px; overflow: hidden; }
+.moderator-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.moderator-social { display: flex; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.moderator-social a { width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 14px; transition: background 0.3s; }
 .moderator-social a:hover { background: var(--primary-dark); }
 .moderator-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
 .moderator-card .role { font-size: 13px; color: var(--gray); }
 
 /* ===== WEBINARS ===== */
 .webinars {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #4A4EB5, #6B6FD6);
-  text-align: center;
-  color: var(--white);
-  position: relative;
+  padding: 100px 0; background: linear-gradient(135deg, #4A4EB5, #6B6FD6);
+  text-align: center; color: var(--white); position: relative;
 }
-.webinars::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(255,255,255,0.08)'/%3E%3C/svg%3E");
-}
+.webinars::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(255,255,255,0.08)'/%3E%3C/svg%3E"); }
 .webinars .container { position: relative; z-index: 1; }
-.webinars .section-wave svg { color: rgba(255,255,255,0.5); }
-.webinars h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.webinars > .container > p {
-  opacity: 0.85;
-  max-width: 600px;
-  margin: 0 auto 60px;
-  font-size: 15px;
-}
-.webinars-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-}
-.webinar-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.webinars h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+.webinars > .container > p { opacity: 0.85; max-width: 600px; margin: 0 auto 60px; font-size: 15px; }
+.webinars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+.webinar-item { display: flex; flex-direction: column; align-items: center; }
 .webinar-icon {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  position: relative;
+  width: 110px; height: 110px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative;
 }
-.webinar-icon::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-}
+.webinar-icon::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); }
 .webinar-icon i { font-size: 36px; color: var(--white); }
 .webinar-item h3 { font-size: 20px; font-weight: 700; }
 
-/* ===== APPLY / CONTRIBUTOR CTA ===== */
-.apply-cta {
-  padding: 80px 0;
-  background: var(--white);
-}
-.apply-cta .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-.apply-cta-image {
-  height: 300px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #e8e8f0, #d5d5e0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.apply-cta-image i { font-size: 80px; color: #bbb; }
-.apply-cta-content h2 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 30px;
-}
-.apply-cta-content hr {
-  border: none;
-  border-top: 2px solid #e8e8e8;
-  margin-bottom: 30px;
-}
+/* ===== APPLY CTA ===== */
+.apply-cta { padding: 80px 0; background: var(--white); }
+.apply-cta .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.apply-cta-image { height: 300px; border-radius: 12px; overflow: hidden; }
+.apply-cta-image img { width: 100%; height: 100%; object-fit: cover; }
+.apply-cta-content h2 { font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 30px; }
+.apply-cta-content hr { border: none; border-top: 2px solid #e8e8e8; margin-bottom: 30px; }
 
-/* ===== COMMUNITY / PRICING ===== */
-.community {
-  padding: 100px 0;
-  background: var(--gray-light);
-  text-align: center;
-}
-.community h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.community > .container > p {
-  color: var(--gray);
-  max-width: 600px;
-  margin: 0 auto 60px;
-  font-size: 15px;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.pricing-card {
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  transition: transform 0.3s;
-}
+/* ===== COMMUNITY ===== */
+.community { padding: 100px 0; background: var(--gray-light); text-align: center; }
+.community h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+.community > .container > p { color: var(--gray); max-width: 600px; margin: 0 auto 60px; font-size: 15px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.pricing-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform 0.3s; }
 .pricing-card:hover { transform: translateY(-5px); }
 .pricing-card.featured .pricing-header { background: var(--primary); }
-.pricing-header {
-  background: #e8e8f0;
-  padding: 40px 30px;
-  text-align: center;
-}
-.pricing-header i {
-  font-size: 50px;
-  margin-bottom: 15px;
-  display: block;
-}
+.pricing-header { background: #e8e8f0; padding: 40px 30px; text-align: center; }
+.pricing-header i { font-size: 50px; margin-bottom: 15px; display: block; }
 .pricing-card.featured .pricing-header i { color: var(--white); }
-.pricing-header .tier-label {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
+.pricing-header .tier-label { font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
 .pricing-card.featured .pricing-header .tier-label { color: rgba(255,255,255,0.8); }
-.pricing-header .tier-name {
-  font-size: 26px;
-  font-weight: 800;
-}
+.pricing-header .tier-name { font-size: 26px; font-weight: 800; }
 .pricing-card.featured .pricing-header .tier-name { color: var(--white); }
-.pricing-body {
-  padding: 30px;
-}
+.pricing-body { padding: 30px; }
 .pricing-body ul { margin-bottom: 30px; }
-.pricing-body li {
-  padding: 10px 0;
-  font-size: 15px;
-  color: var(--gray);
-  border-bottom: 1px solid #f0f0f0;
-}
+.pricing-body li { padding: 10px 0; font-size: 15px; color: var(--gray); border-bottom: 1px solid #f0f0f0; }
 .pricing-body li:last-child { border-bottom: none; }
-.pricing-body .btn-primary { width: 100%; text-align: center; }
-.pricing-body .btn-outline-dark { width: 100%; text-align: center; }
+.pricing-body .btn-primary, .pricing-body .btn-outline-dark { width: 100%; text-align: center; }
 
-/* ===== BRANDS / DIVERSE GROUP ===== */
-.brands {
-  padding: 100px 0;
-  background: var(--white);
-}
-.brands .container {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 60px;
-  align-items: center;
-}
-.brands-content .section-wave svg { width: 60px; }
-.brands-content h2 {
-  font-size: 38px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-.brands-content p {
-  color: var(--gray);
-  font-size: 15px;
-  margin-bottom: 30px;
-}
-.brands-logos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.brand-logo {
-  background: #f9f9fc;
-  border-radius: 10px;
-  padding: 30px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-  color: #bbb;
-  letter-spacing: 1px;
-  min-height: 100px;
-}
+/* ===== BRANDS ===== */
+.brands { padding: 100px 0; background: var(--white); }
+.brands .container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center; }
+.brands-content h2 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+.brands-content p { color: var(--gray); font-size: 15px; margin-bottom: 30px; }
+.brands-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.brand-logo { background: #f9f9fc; border-radius: 10px; padding: 25px 15px; display: flex; align-items: center; justify-content: center; min-height: 100px; }
+.brand-logo img { max-height: 60px; max-width: 140px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s; }
+.brand-logo:hover img { filter: grayscale(0%); opacity: 1; }
 
 /* ===== NEWSLETTER ===== */
-.newsletter {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #4A4EB5, #6B6FD6);
-  position: relative;
-  overflow: hidden;
-}
-.newsletter .container {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-.newsletter-image {
-  height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.newsletter-image i { font-size: 100px; color: rgba(255,255,255,0.3); }
-.newsletter-content {
-  color: var(--white);
-  text-align: center;
-}
-.newsletter-content h3 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.newsletter-content h2 {
-  font-size: 32px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-}
+.newsletter { padding: 80px 0; background: linear-gradient(135deg, #4A4EB5, #6B6FD6); position: relative; overflow: hidden; }
+.newsletter .container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.newsletter-image { height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; }
+.newsletter-image img { height: 100%; object-fit: cover; }
+.newsletter-content { color: var(--white); text-align: center; }
+.newsletter-content h3 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.newsletter-content h2 { font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
 .newsletter .btn-outline { background: var(--white); color: var(--primary); border-color: var(--white); }
 .newsletter .btn-outline:hover { background: transparent; color: var(--white); }
 
 /* ===== TESTIMONIALS ===== */
-.testimonials {
-  padding: 100px 0;
-  background: var(--white);
-}
-.testimonials .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-.testimonials-left h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-.testimonials-left > p {
-  color: var(--gray);
-  font-size: 15px;
-  margin-bottom: 40px;
-}
-.stat-row {
-  display: flex;
-  gap: 50px;
-  margin-top: 30px;
-}
+.testimonials { padding: 100px 0; background: var(--white); }
+.testimonials .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.testimonials-left h2 { font-size: 38px; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.testimonials-left > p { color: var(--gray); font-size: 15px; margin-bottom: 40px; }
+.stat-row { display: flex; gap: 50px; margin-top: 30px; }
 .stat-item { text-align: center; }
-.stat-number {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--primary);
-}
-.stat-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.testimonials-right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.testimonial-card {
-  padding: 30px;
-  border-radius: 12px;
-  position: relative;
-}
-.testimonial-card:nth-child(odd) {
-  background: #f7f7fa;
-}
-.testimonial-card:nth-child(even) {
-  background: var(--primary);
-  color: var(--white);
-}
-.testimonial-card p {
-  font-size: 15px;
-  line-height: 1.7;
-  font-style: italic;
-}
-.testimonial-card .quote-icon {
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
-  font-size: 40px;
-  opacity: 0.15;
-}
+.stat-number { font-size: 48px; font-weight: 800; color: var(--primary); }
+.stat-label { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.testimonials-right { display: flex; flex-direction: column; gap: 20px; }
+.testimonial-card { padding: 30px; border-radius: 12px; position: relative; }
+.testimonial-card:nth-child(odd) { background: #f7f7fa; }
+.testimonial-card:nth-child(even) { background: var(--primary); color: var(--white); }
+.testimonial-card p { font-size: 15px; line-height: 1.7; font-style: italic; }
+.testimonial-card .quote-icon { position: absolute; bottom: 15px; right: 20px; font-size: 40px; opacity: 0.15; }
 
 /* ===== BLOG ===== */
-.blog {
-  padding: 100px 0;
-  background: var(--gray-light);
-  text-align: center;
-}
-.blog h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.blog > .container > p {
-  color: var(--gray);
-  max-width: 500px;
-  margin: 0 auto 60px;
-  font-size: 15px;
-}
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  text-align: left;
-}
-.blog-card {
-  background: var(--white);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  transition: transform 0.3s;
-}
+.blog { padding: 100px 0; background: var(--gray-light); text-align: center; }
+.blog h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+.blog > .container > p { color: var(--gray); max-width: 500px; margin: 0 auto 60px; font-size: 15px; }
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: left; }
+.blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s; }
 .blog-card:hover { transform: translateY(-5px); }
-.blog-card-image {
-  height: 220px;
-  background: linear-gradient(135deg, #e0e0e8, #d0d0d8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.blog-card-image i { font-size: 50px; color: #bbb; }
+.blog-card-image { height: 220px; overflow: hidden; }
+.blog-card-image img { width: 100%; height: 100%; object-fit: cover; }
 .blog-card-body { padding: 25px; }
-.blog-card-body h3 {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 12px;
-  color: var(--text);
-}
+.blog-card-body h3 { font-size: 17px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text); }
 .blog-card-body h3 a:hover { color: var(--primary); }
-.blog-card-meta {
-  display: flex;
-  gap: 15px;
-  font-size: 13px;
-  color: #999;
-}
+.blog-card-meta { display: flex; gap: 15px; font-size: 13px; color: #999; }
 
 /* ===== SUBSCRIBE BANNER ===== */
-.subscribe-banner {
-  padding: 0;
-  background: var(--white);
-}
-.subscribe-banner .container {
-  max-width: 1100px;
-}
-.subscribe-card {
-  background: linear-gradient(135deg, #555, #333);
-  border-radius: 16px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 300px;
-  position: relative;
-}
-.subscribe-card-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.2);
-}
-.subscribe-card-image i { font-size: 80px; color: rgba(255,255,255,0.3); }
+.subscribe-banner { padding: 60px 0; background: var(--white); }
+.subscribe-banner .container { max-width: 1100px; }
+.subscribe-card { border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; min-height: 300px; position: relative; }
+.subscribe-card-image { overflow: hidden; }
+.subscribe-card-image img { width: 100%; height: 100%; object-fit: cover; }
 .subscribe-card-content {
-  padding: 50px 40px;
-  color: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  padding: 50px 40px; color: var(--white); display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
 }
 .subscribe-card-content h3 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
 .subscribe-card-content p { opacity: 0.8; margin-bottom: 25px; }
 .newsletter-ribbon {
-  position: absolute;
-  top: 20px;
-  right: -30px;
-  background: var(--primary);
-  color: var(--white);
-  padding: 8px 40px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transform: rotate(45deg);
+  position: absolute; top: 20px; right: -30px; background: var(--primary); color: var(--white);
+  padding: 8px 40px; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; transform: rotate(45deg);
 }
 
 /* ===== FINAL CTA ===== */
-.final-cta {
-  padding: 80px 0;
-  background: var(--white);
-}
-.final-cta .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-.final-cta h2 {
-  font-size: 42px;
-  font-weight: 700;
-}
-.final-cta .section-wave svg { width: 90px; }
+.final-cta { padding: 80px 0; background: var(--white); }
+.final-cta .container { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.final-cta h2 { font-size: 42px; font-weight: 700; }
 
 /* ===== FOOTER ===== */
-.footer {
-  background: linear-gradient(135deg, #1a1a3e, #2a2a5e);
-  color: var(--white);
-  padding: 70px 0 0;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
-  gap: 40px;
-  padding-bottom: 50px;
-}
-.footer-brand .logo { color: var(--white); margin-bottom: 15px; }
-.footer-brand .logo .logo-icon { background: var(--primary); }
-.footer-brand .tagline {
-  font-size: 14px;
-  opacity: 0.7;
-  margin-bottom: 20px;
-}
-.footer-social {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.footer-social a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-size: 16px;
-  transition: background 0.3s;
-}
+.footer { background: linear-gradient(135deg, #1a1a3e, #2a2a5e); color: var(--white); padding: 70px 0 0; }
+.footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 50px; }
+.footer-brand .logo { margin-bottom: 15px; }
+.footer-brand .logo img { height: 36px; filter: brightness(0) invert(1); }
+.footer-brand .tagline { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
+.footer-social { display: flex; gap: 10px; margin-bottom: 20px; }
+.footer-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 16px; transition: background 0.3s; }
 .footer-social a:hover { background: var(--primary); }
-.footer h4 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
+.footer h4 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
 .footer-links li { margin-bottom: 10px; }
-.footer-links a {
-  font-size: 14px;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
+.footer-links a { font-size: 14px; opacity: 0.7; transition: opacity 0.3s; }
 .footer-links a:hover { opacity: 1; }
-.footer-network .network-desc {
-  font-size: 14px;
-  opacity: 0.7;
-  margin-bottom: 20px;
-}
-.network-cities {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.network-cities span {
-  font-size: 13px;
-  opacity: 0.6;
-}
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  opacity: 0.6;
-}
+.footer-network .network-desc { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
+.network-cities { display: flex; flex-wrap: wrap; gap: 8px; }
+.network-cities span { font-size: 13px; opacity: 0.6; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; opacity: 0.6; }
 .footer-bottom-links { display: flex; gap: 20px; }
 .footer-bottom-links a:hover { opacity: 1; }
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-.animate-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
@@ -1141,7 +361,6 @@ img { max-width: 100%; display: block; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .final-cta .container { flex-direction: column; text-align: center; }
 }
-
 @media (max-width: 768px) {
   .hero { padding: 60px 0; min-height: auto; }
   .hero h1 { font-size: 34px; }
@@ -1156,34 +375,31 @@ img { max-width: 100%; display: block; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
   .header-right { gap: 12px; }
   .header-signin { display: none; }
-  .menu-toggle { display: block; }
 }
-
 @media (max-width: 480px) {
   .hero h1 { font-size: 28px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .container { padding: 0 20px; }
-  section { padding: 60px 0; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header class="header" id="top">
   <div class="container">
-    <a href="#top" class="logo">
-      <span class="logo-icon">ta</span>exchange
+    <a href="https://taex007.wpenginepowered.com/" class="logo">
+      <img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/talogosmallv200.png" alt="TA Exchange">
     </a>
     <div class="header-right">
       <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
-      <a href="#" class="header-signin">Sign in</a>
-      <a href="#" class="header-signup">Sign up</a>
+      <a href="https://taex007.wpenginepowered.com/wp-login.php" class="header-signin">Sign in</a>
+      <a href="https://taex007.wpenginepowered.com/apply/" class="header-signup">Sign up</a>
     </div>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="container">
     <div class="hero-content">
@@ -1191,20 +407,18 @@ img { max-width: 100%; display: block; }
       <p>Join a select group of Talent Acquisition professionals in a private community who are sharing, discussing and engaging on the biggest challenges and opportunities facing the industry today.</p>
       <div class="hero-buttons">
         <a href="#about" class="btn-primary">LEARN MORE</a>
-        <a href="#community" class="btn-outline">JOIN NOW</a>
+        <a href="https://taex007.wpenginepowered.com/apply/" class="btn-outline">JOIN NOW</a>
       </div>
     </div>
     <div class="hero-image">
       <div class="hero-image-circle">
-        <div class="person-placeholder">
-          <i class="fas fa-user-tie"></i>
-        </div>
+        <img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img57.png" alt="Professional with tablet">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
     <div class="about-left">
@@ -1213,39 +427,29 @@ img { max-width: 100%; display: block; }
       <p class="about-text">We are a group of Talent Acquisition Leaders wanting to collaborate with other like minded innovative professionals. We are a private community that is focused on sharing ideas, experiences and insights to help each other grow and develop.</p>
       <div class="about-stat">
         <span class="about-stat-number">100+</span>
-        <div>
-          <span class="about-stat-label">YEARS OF EXPERIENCE</span>
-        </div>
+        <div><span class="about-stat-label">YEARS OF EXPERIENCE</span></div>
       </div>
     </div>
     <div class="about-right">
       <div class="about-video">
+        <img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-18-at-09.37.43.png" alt="Video thumbnail">
         <div class="play-btn"><i class="fas fa-play"></i></div>
       </div>
       <div class="about-skills">
         <p class="about-skills-quote">"Skills and experience within our community. These are growing day by day"</p>
         <div class="skill-bar">
           <div class="skill-bar-label">TALENT ACQUISITION</div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="85"></div>
-            <div class="skill-bar-dot" data-left="85"></div>
-          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div><div class="skill-bar-dot" data-left="85"></div></div>
           <div class="skill-bar-percent">85%</div>
         </div>
         <div class="skill-bar">
           <div class="skill-bar-label">TALENT ATTRACTION</div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="78"></div>
-            <div class="skill-bar-dot" data-left="78"></div>
-          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div><div class="skill-bar-dot" data-left="78"></div></div>
           <div class="skill-bar-percent">78%</div>
         </div>
         <div class="skill-bar">
           <div class="skill-bar-label">TALENT ACQUISITION TECHNOLOGY</div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="70"></div>
-            <div class="skill-bar-dot" data-left="70"></div>
-          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div><div class="skill-bar-dot" data-left="70"></div></div>
           <div class="skill-bar-percent">70%</div>
         </div>
         <a href="#community" class="btn-primary">LEARN MORE</a>
@@ -1254,7 +458,7 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ===== EXPLORE TOPICS ===== -->
+<!-- EXPLORE TOPICS -->
 <section class="topics" id="topics">
   <div class="container">
     <span class="section-wave" style="display:inline-block;"><svg viewBox="0 0 80 20"><path d="M0 10 Q10 0 20 10 Q30 20 40 10 Q50 0 60 10 Q70 20 80 10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span>
@@ -1262,105 +466,67 @@ img { max-width: 100%; display: block; }
     <p>Join the conversation in our group forums to discuss the latest topics impacting the Talent Acquisition industry.</p>
     <div class="topics-wrapper">
       <div class="topics-col-left">
-        <div class="topic-card">
-          <div class="topic-info"><h4>New Hire Onboarding</h4><p>Join the conversation.</p></div>
-          <div class="topic-icon"><i class="fas fa-clipboard-check"></i></div>
-        </div>
-        <div class="topic-card">
-          <div class="topic-info"><h4>Shared Services</h4><p>Join the conversation.</p></div>
-          <div class="topic-icon"><i class="fas fa-people-arrows"></i></div>
-        </div>
-        <div class="topic-card">
-          <div class="topic-info"><h4>Tools and Technology</h4><p>Join the conversation.</p></div>
-          <div class="topic-icon"><i class="fas fa-rocket"></i></div>
-        </div>
+        <div class="topic-card"><div class="topic-info"><h4>New Hire Onboarding</h4><p>Join the conversation.</p></div><div class="topic-icon"><i class="fas fa-clipboard-check"></i></div></div>
+        <div class="topic-card"><div class="topic-info"><h4>Shared Services</h4><p>Join the conversation.</p></div><div class="topic-icon"><i class="fas fa-people-arrows"></i></div></div>
+        <div class="topic-card"><div class="topic-info"><h4>Tools and Technology</h4><p>Join the conversation.</p></div><div class="topic-icon"><i class="fas fa-rocket"></i></div></div>
       </div>
       <div class="topics-col-center">
         <div class="topics-circle">
-          <i class="fas fa-users"></i>
+          <img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img34.jpg" alt="Team collaborating">
         </div>
       </div>
       <div class="topics-col-right">
-        <div class="topic-card">
-          <div class="topic-icon"><i class="fas fa-chart-bar"></i></div>
-          <div class="topic-info"><h4>Metrics and Data</h4><p>Join the conversation.</p></div>
-        </div>
-        <div class="topic-card">
-          <div class="topic-icon"><i class="fas fa-dollar-sign"></i></div>
-          <div class="topic-info"><h4>Hiring Strategy</h4><p>Join the conversation.</p></div>
-        </div>
-        <div class="topic-card">
-          <div class="topic-icon"><i class="fas fa-bullseye"></i></div>
-          <div class="topic-info"><h4>Talent Attraction</h4><p>Join the conversation.</p></div>
-        </div>
+        <div class="topic-card"><div class="topic-icon"><i class="fas fa-chart-bar"></i></div><div class="topic-info"><h4>Metrics and Data</h4><p>Join the conversation.</p></div></div>
+        <div class="topic-card"><div class="topic-icon"><i class="fas fa-dollar-sign"></i></div><div class="topic-info"><h4>Hiring Strategy</h4><p>Join the conversation.</p></div></div>
+        <div class="topic-card"><div class="topic-icon"><i class="fas fa-bullseye"></i></div><div class="topic-info"><h4>Talent Attraction</h4><p>Join the conversation.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== JOIN CTA ===== -->
+<!-- JOIN CTA -->
 <section class="join-cta">
-  <a href="#community" class="btn-primary">JOIN NOW</a>
+  <a href="https://taex007.wpenginepowered.com/apply/" class="btn-primary">JOIN NOW</a>
 </section>
 
-<!-- ===== CHECKOUT OUR GROUPS ===== -->
+<!-- GROUPS -->
 <section class="groups" id="groups">
   <div class="container">
     <h2>Checkout Our Groups</h2>
     <p>Join the right group of people discussing the topics you want to be a part of.</p>
     <div class="groups-grid">
-      <!-- Row 1 -->
       <div class="group-card">
-        <div class="group-card-image"><i class="fas fa-users"></i><span class="group-card-tag">Individual</span></div>
-        <div class="group-card-body">
-          <h3>TA Community</h3>
-          <p>This group is for individuals that are in Talent Acquisition who want to discuss everything about acquiring talent.</p>
-        </div>
+        <div class="group-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img29.jpg" alt="TA Community"><span class="group-card-tag">Individual</span></div>
+        <div class="group-card-body"><h3>TA Community</h3><p>This group is for individuals that are in Talent Acquisition who want to discuss everything about acquiring talent.</p></div>
       </div>
       <div class="group-card">
-        <div class="group-card-image"><i class="fas fa-user-tie"></i><span class="group-card-tag">Management</span></div>
-        <div class="group-card-body">
-          <h3>TA Manager Community</h3>
-          <p>This group is for Talent Acquisition Line Managers wanting to collaborate with their peers.</p>
-        </div>
+        <div class="group-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img27.jpg" alt="TA Manager Community"><span class="group-card-tag">Management</span></div>
+        <div class="group-card-body"><h3>TA Manager Community</h3><p>This group is for Talent Acquisition Line Managers wanting to collaborate with their peers.</p></div>
       </div>
       <div class="group-card">
-        <div class="group-card-image"><i class="fas fa-crown"></i><span class="group-card-tag">Leaders</span></div>
-        <div class="group-card-body">
-          <h3>TA Leader Community</h3>
-          <p>This group is for experienced Talent Acquisition Leaders wanting to collaborate with their peers.</p>
-        </div>
-      </div>
-      <!-- Row 2 -->
-      <div class="group-card">
-        <div class="group-card-image" style="background: linear-gradient(135deg, #6B6FD6, #8B8FE6);"><i class="fas fa-hand-holding-heart"></i><span class="group-card-tag">For All</span></div>
-        <div class="group-card-body">
-          <h3>Talent Acquisition for NOW</h3>
-          <p>This group is for everyone who wants to discuss the challenges and the opportunities in Talent Acquisition.</p>
-        </div>
+        <div class="group-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img28.jpg" alt="TA Leader Community"><span class="group-card-tag">Leaders</span></div>
+        <div class="group-card-body"><h3>TA Leader Community</h3><p>This group is for experienced Talent Acquisition Leaders wanting to collaborate with their peers.</p></div>
       </div>
       <div class="group-card">
-        <div class="group-card-image" style="background: linear-gradient(135deg, #6B6FD6, #8B8FE6);"><i class="fas fa-building"></i><span class="group-card-tag">For All</span></div>
-        <div class="group-card-body">
-          <h3>Employer Branding</h3>
-          <p>This group is for people who want to discuss the world of Employer Branding in the context of Talent Acquisition.</p>
-        </div>
+        <div class="group-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img32.jpg" alt="TA for NOW"><span class="group-card-tag">For All</span></div>
+        <div class="group-card-body"><h3>Talent Acquisition for NOW</h3><p>This group is for everyone who wants to discuss the challenges and the opportunities in Talent Acquisition.</p></div>
       </div>
       <div class="group-card">
-        <div class="group-card-image" style="background: linear-gradient(135deg, #6B6FD6, #8B8FE6);"><i class="fas fa-magnet"></i><span class="group-card-tag">For All</span></div>
-        <div class="group-card-body">
-          <h3>Talent Attraction</h3>
-          <p>This group is for everyone who wants to discuss the challenges and the opportunities relating to Talent Attraction.</p>
-        </div>
+        <div class="group-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img30.jpg" alt="Employer Branding"><span class="group-card-tag">For All</span></div>
+        <div class="group-card-body"><h3>Employer Branding</h3><p>This group is for people who want to discuss the world of Employer Branding in the context of Talent Acquisition.</p></div>
+      </div>
+      <div class="group-card">
+        <div class="group-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img31.jpg" alt="Talent Attraction"><span class="group-card-tag">For All</span></div>
+        <div class="group-card-body"><h3>Talent Attraction</h3><p>This group is for everyone who wants to discuss the challenges and the opportunities relating to Talent Attraction.</p></div>
       </div>
     </div>
     <div class="groups-join" style="margin-top:30px;">
-      <a href="#community" class="btn-primary">JOIN NOW</a>
+      <a href="https://taex007.wpenginepowered.com/apply/" class="btn-primary">JOIN NOW</a>
     </div>
   </div>
 </section>
 
-<!-- ===== MODERATORS ===== -->
+<!-- MODERATORS -->
 <section class="moderators" id="moderators">
   <div class="container">
     <span class="section-wave" style="display:inline-block;"><svg viewBox="0 0 80 20"><path d="M0 10 Q10 0 20 10 Q30 20 40 10 Q50 0 60 10 Q70 20 80 10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span>
@@ -1368,37 +534,37 @@ img { max-width: 100%; display: block; }
     <p>Active industry leaders moderating and facilitating the conversations.</p>
     <div class="moderators-grid">
       <div class="moderator-card">
-        <div class="moderator-avatar"><i class="fas fa-user"></i></div>
+        <div class="moderator-avatar"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/IMG_5290.jpg" alt="Simon Valentine"></div>
         <div class="moderator-social">
-          <a href="#"><i class="fas fa-user"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://taex007.wpenginepowered.com/members/simon-valentine"><i class="fas fa-user"></i></a>
+          <a href="https://www.linkedin.com/in/simonvalentine/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <h4>Simon Valentine</h4>
         <p class="role">Community Founder</p>
       </div>
       <div class="moderator-card">
-        <div class="moderator-avatar"><i class="fas fa-user"></i></div>
+        <div class="moderator-avatar"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/1615530323697-300x300.jpeg" alt="Victoria Murphy"></div>
         <div class="moderator-social">
-          <a href="#"><i class="fas fa-user"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://taex007.wpenginepowered.com/members/victoria-murphy"><i class="fas fa-user"></i></a>
+          <a href="https://www.linkedin.com/in/victoriamurphy/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <h4>VICTORIA MURPHY</h4>
         <p class="role">Moderator</p>
       </div>
       <div class="moderator-card">
-        <div class="moderator-avatar"><i class="fas fa-user"></i></div>
+        <div class="moderator-avatar"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/groups-1.png" alt="TBD"></div>
         <div class="moderator-social">
-          <a href="#"><i class="fas fa-user"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://taex007.wpenginepowered.com/members/GeneviveCalib-og"><i class="fas fa-user"></i></a>
+          <a href="https://www.linkedin.com/in/genevive-cobar-349269ba/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <h4>TBD</h4>
         <p class="role">Moderator</p>
       </div>
       <div class="moderator-card">
-        <div class="moderator-avatar"><i class="fas fa-user"></i></div>
+        <div class="moderator-avatar"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/groups-1.png" alt="TBD"></div>
         <div class="moderator-social">
-          <a href="#"><i class="fas fa-user"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://taex007.wpenginepowered.com/members/GeneviveCalib-og"><i class="fas fa-user"></i></a>
+          <a href="https://www.linkedin.com/in/genevive-cobar-349269ba/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <h4>TBD</h4>
         <p class="role">Moderator</p>
@@ -1407,45 +573,33 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ===== WEBINARS ===== -->
+<!-- WEBINARS -->
 <section class="webinars" id="webinars">
   <div class="container">
     <h2>Our Talent Acquisition Webinars</h2>
     <p>Hear from industry leaders discussing the latest trends, challenges and opportunities across Talent Acquisition.</p>
     <div class="webinars-grid">
-      <div class="webinar-item">
-        <div class="webinar-icon"><i class="fas fa-search-plus"></i></div>
-        <h3>Research</h3>
-      </div>
-      <div class="webinar-item">
-        <div class="webinar-icon"><i class="fas fa-atom"></i></div>
-        <h3>Innovate</h3>
-      </div>
-      <div class="webinar-item">
-        <div class="webinar-icon"><i class="fas fa-cogs"></i></div>
-        <h3>Technology</h3>
-      </div>
-      <div class="webinar-item">
-        <div class="webinar-icon"><i class="fas fa-check-circle"></i></div>
-        <h3>Solutions</h3>
-      </div>
+      <div class="webinar-item"><div class="webinar-icon"><i class="fas fa-search-plus"></i></div><h3>Research</h3></div>
+      <div class="webinar-item"><div class="webinar-icon"><i class="fas fa-atom"></i></div><h3>Innovate</h3></div>
+      <div class="webinar-item"><div class="webinar-icon"><i class="fas fa-cogs"></i></div><h3>Technology</h3></div>
+      <div class="webinar-item"><div class="webinar-icon"><i class="fas fa-check-circle"></i></div><h3>Solutions</h3></div>
     </div>
   </div>
 </section>
 
-<!-- ===== APPLY CTA ===== -->
+<!-- APPLY CTA -->
 <section class="apply-cta">
   <div class="container">
-    <div class="apply-cta-image"><i class="fas fa-laptop-code"></i></div>
+    <div class="apply-cta-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img26.jpg" alt="Team collaboration"></div>
     <div class="apply-cta-content">
       <h2>Do You Have What It Takes To Be Article Contributor, Workshop Facilitator or Group Moderator?</h2>
       <hr>
-      <a href="#" class="btn-primary">APPLY NOW</a>
+      <a href="https://taex007.wpenginepowered.com/careers/" class="btn-primary">APPLY NOW</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FIND THE RIGHT COMMUNITY ===== -->
+<!-- FIND THE RIGHT COMMUNITY -->
 <section class="community" id="community">
   <div class="container">
     <span class="section-wave" style="display:inline-block;"><svg viewBox="0 0 80 20"><path d="M0 10 Q10 0 20 10 Q30 20 40 10 Q50 0 60 10 Q70 20 80 10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span>
@@ -1453,93 +607,63 @@ img { max-width: 100%; display: block; }
     <p>Choose the right community so you get the most out of your experience and connect you with like minded people within our platform.</p>
     <div class="pricing-grid">
       <div class="pricing-card featured">
-        <div class="pricing-header">
-          <i class="fas fa-trophy"></i>
-          <div class="tier-label">INDIVIDUAL</div>
-          <div class="tier-name">Contributors</div>
-        </div>
+        <div class="pricing-header"><i class="fas fa-trophy"></i><div class="tier-label">INDIVIDUAL</div><div class="tier-name">Contributors</div></div>
         <div class="pricing-body">
-          <ul>
-            <li>Recruiters</li>
-            <li>Sourcers</li>
-            <li>Back Office Support</li>
-            <li>Talent Marketers</li>
-            <li>Project Managers</li>
-          </ul>
-          <a href="#" class="btn-primary">GET STARTED</a>
+          <ul><li>Recruiters</li><li>Sourcers</li><li>Back Office Support</li><li>Talent Marketers</li><li>Project Managers</li></ul>
+          <a href="https://taex007.wpenginepowered.com/apply/" class="btn-primary">GET STARTED</a>
         </div>
       </div>
       <div class="pricing-card">
-        <div class="pricing-header">
-          <i class="fas fa-medal" style="color:var(--primary);"></i>
-          <div class="tier-label">LINE</div>
-          <div class="tier-name">Managers</div>
-        </div>
+        <div class="pricing-header"><i class="fas fa-medal" style="color:var(--primary);"></i><div class="tier-label">LINE</div><div class="tier-name">Managers</div></div>
         <div class="pricing-body">
-          <ul>
-            <li>People Managers</li>
-            <li>Line Managers</li>
-            <li>Country Manager</li>
-            <li>Office Manager</li>
-            <li>Shared Service Manager</li>
-          </ul>
-          <a href="#" class="btn-outline-dark">GET STARTED</a>
+          <ul><li>People Managers</li><li>Line Managers</li><li>Country Manager</li><li>Office Manager</li><li>Shared Service Manager</li></ul>
+          <a href="https://taex007.wpenginepowered.com/apply/" class="btn-outline-dark">GET STARTED</a>
         </div>
       </div>
       <div class="pricing-card">
-        <div class="pricing-header">
-          <i class="fas fa-chart-line" style="color:var(--primary);"></i>
-          <div class="tier-label">GLOBAL</div>
-          <div class="tier-name">Leaders</div>
-        </div>
+        <div class="pricing-header"><i class="fas fa-chart-line" style="color:var(--primary);"></i><div class="tier-label">GLOBAL</div><div class="tier-name">Leaders</div></div>
         <div class="pricing-body">
-          <ul>
-            <li>Global Leaders</li>
-            <li>Regional Leaders</li>
-            <li>Functional Leaders</li>
-            <li>Executives</li>
-            <li>Strategic Leaders</li>
-          </ul>
-          <a href="#" class="btn-outline-dark">GET STARTED</a>
+          <ul><li>Global Leaders</li><li>Regional Leaders</li><li>Functional Leaders</li><li>Executives</li><li>Strategic Leaders</li></ul>
+          <a href="https://taex007.wpenginepowered.com/apply/" class="btn-outline-dark">GET STARTED</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== DIVERSE GROUP / BRANDS ===== -->
+<!-- BRANDS -->
 <section class="brands" id="brands">
   <div class="container">
     <div class="brands-content">
       <span class="section-wave"><svg viewBox="0 0 80 20"><path d="M0 10 Q10 0 20 10 Q30 20 40 10 Q50 0 60 10 Q70 20 80 10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span>
       <h2>Our Community is made up of a <span class="accent">Diverse Group</span> of Professionals.</h2>
       <p>Join this well connected and growing community who work for or have worked for some the leading brands.</p>
-      <a href="#community" class="btn-primary">JOIN NOW</a>
+      <a href="https://taex007.wpenginepowered.com/apply/" class="btn-primary">JOIN NOW</a>
     </div>
     <div class="brands-logos">
-      <div class="brand-logo">Standard Chartered</div>
-      <div class="brand-logo">CISCO</div>
-      <div class="brand-logo">JLL</div>
-      <div class="brand-logo">Uber</div>
-      <div class="brand-logo">J&amp;J</div>
-      <div class="brand-logo">SIEMENS</div>
+      <div class="brand-logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/Untitled-6-1-e1629827943379.png" alt="Standard Chartered"></div>
+      <div class="brand-logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/c-1-e1629827275233.png" alt="Cisco"></div>
+      <div class="brand-logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/JLL-1.png" alt="JLL"></div>
+      <div class="brand-logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/uber-copy-1-e1641990877524.png" alt="Uber"></div>
+      <div class="brand-logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/jj-1.png" alt="Johnson and Johnson"></div>
+      <div class="brand-logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/siemens-1.png" alt="Siemens"></div>
     </div>
   </div>
 </section>
 
-<!-- ===== NEWSLETTER ===== -->
+<!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
   <div class="container">
-    <div class="newsletter-image"><i class="fas fa-user-tie"></i></div>
+    <div class="newsletter-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img57.png" alt="Professional"></div>
     <div class="newsletter-content">
       <h3>Have Value Delivered To Your Inbox</h3>
       <h2>GET OUR LATEST MARKET INSIGHTS EMAILED TO YOU</h2>
-      <a href="#" class="btn-outline">SUBSCRIBE</a>
+      <a href="https://www.linkedin.com/newsletters/talent-acquisition-6884431755651145728/" target="_blank" class="btn-outline">SUBSCRIBE</a>
     </div>
   </div>
 </section>
 
-<!-- ===== TESTIMONIALS ===== -->
+<!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="testimonials-left">
@@ -1547,34 +671,19 @@ img { max-width: 100%; display: block; }
       <h2>What Are Our <span class="accent">Members</span> Saying</h2>
       <p>Our members are benefiting from being able to connect, collaborate and get support from other Talent Acquisitions professionals overcoming the same challenges.</p>
       <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-number">90%</div>
-          <div class="stat-label">POSITIVE REVIEWS</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">97%</div>
-          <div class="stat-label">SATISFIED MEMBERS</div>
-        </div>
+        <div class="stat-item"><div class="stat-number">90%</div><div class="stat-label">POSITIVE REVIEWS</div></div>
+        <div class="stat-item"><div class="stat-number">97%</div><div class="stat-label">SATISFIED MEMBERS</div></div>
       </div>
     </div>
     <div class="testimonials-right">
-      <div class="testimonial-card">
-        <p>"I have been an in-house recruitment manager for a couple years now and this community allows me to stay connected to what is taking place out in the recruitment market."</p>
-        <span class="quote-icon"><i class="fas fa-quote-right"></i></span>
-      </div>
-      <div class="testimonial-card">
-        <p>"It is so good to be able to connect with like minded people to help you"</p>
-        <span class="quote-icon"><i class="fas fa-quote-right"></i></span>
-      </div>
-      <div class="testimonial-card">
-        <p>"Connecting with other professionals who are out there looking to solve the same problems I am looking to solve is incredibly valuable."</p>
-        <span class="quote-icon"><i class="fas fa-quote-right"></i></span>
-      </div>
+      <div class="testimonial-card"><p>"I have been an in-house recruitment manager for a couple years now and this community allows me to stay connected to what is taking place out in the recruitment market."</p><span class="quote-icon"><i class="fas fa-quote-right"></i></span></div>
+      <div class="testimonial-card"><p>"It is so good to be able to connect with like minded people to help you"</p><span class="quote-icon"><i class="fas fa-quote-right"></i></span></div>
+      <div class="testimonial-card"><p>"Connecting with other professionals who are out there looking to solve the same problems I am looking to solve is incredibly valuable."</p><span class="quote-icon"><i class="fas fa-quote-right"></i></span></div>
     </div>
   </div>
 </section>
 
-<!-- ===== BLOG ===== -->
+<!-- BLOG -->
 <section class="blog" id="blog">
   <div class="container">
     <span class="section-wave" style="display:inline-block;"><svg viewBox="0 0 80 20"><path d="M0 10 Q10 0 20 10 Q30 20 40 10 Q50 0 60 10 Q70 20 80 10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span>
@@ -1582,198 +691,134 @@ img { max-width: 100%; display: block; }
     <p>Read the latest articles and gain insight from industry experts.</p>
     <div class="blog-grid">
       <div class="blog-card">
-        <div class="blog-card-image"><i class="fas fa-graduation-cap"></i></div>
-        <div class="blog-card-body">
-          <h3><a href="#">The Importance of Continuous Learning and Upskilling for Aspiring Talent Acquisition Leaders</a></h3>
-          <div class="blog-card-meta">
-            <span>June 27, 2023</span>
-            <span>No Comments</span>
-          </div>
-        </div>
+        <div class="blog-card-image"><a href="https://taex007.wpenginepowered.com/the-importance-of-continuous-learning-and-upskilling-for-aspiring-talent-acquisition-leaders/"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2023/06/3212-1024x600.png" alt="Continuous Learning"></a></div>
+        <div class="blog-card-body"><h3><a href="https://taex007.wpenginepowered.com/the-importance-of-continuous-learning-and-upskilling-for-aspiring-talent-acquisition-leaders/">The Importance of Continuous Learning and Upskilling for Aspiring Talent Acquisition Leaders</a></h3><div class="blog-card-meta"><span>June 27, 2023</span><span>No Comments</span></div></div>
       </div>
       <div class="blog-card">
-        <div class="blog-card-image" style="background: linear-gradient(135deg, #d0d8e8, #c0c8d8);"><i class="fas fa-robot"></i></div>
-        <div class="blog-card-body">
-          <h3><a href="#">Impact of AI on Talent Acquisition: What you need to know.</a></h3>
-          <div class="blog-card-meta">
-            <span>May 16, 2023</span>
-            <span>No Comments</span>
-          </div>
-        </div>
+        <div class="blog-card-image"><a href="https://taex007.wpenginepowered.com/impact-of-ai-on-talent-acquisition-what-you-need-to-know/"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2023/06/s-1024x600.png" alt="AI in Talent Acquisition"></a></div>
+        <div class="blog-card-body"><h3><a href="https://taex007.wpenginepowered.com/impact-of-ai-on-talent-acquisition-what-you-need-to-know/">Impact of AI on Talent Acquisition: What you need to know.</a></h3><div class="blog-card-meta"><span>May 16, 2023</span><span>No Comments</span></div></div>
       </div>
       <div class="blog-card">
-        <div class="blog-card-image" style="background: linear-gradient(135deg, #c8d0e0, #b8c0d0);"><i class="fas fa-users"></i></div>
-        <div class="blog-card-body">
-          <h3><a href="#">One Talent Acquisition community you need to be a part of in 2022.</a></h3>
-          <div class="blog-card-meta">
-            <span>January 5, 2022</span>
-            <span>No Comments</span>
-          </div>
-        </div>
+        <div class="blog-card-image"><a href="https://taex007.wpenginepowered.com/one-talent-acquisition-community-you-need-to-be-a-part-of-in-2022/"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/businext-img26.jpg" alt="TA Community"></a></div>
+        <div class="blog-card-body"><h3><a href="https://taex007.wpenginepowered.com/one-talent-acquisition-community-you-need-to-be-a-part-of-in-2022/">One Talent Acquisition community you need to be a part of in 2022.</a></h3><div class="blog-card-meta"><span>January 5, 2022</span><span>No Comments</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SUBSCRIBE BANNER ===== -->
-<section class="subscribe-banner" style="padding: 60px 0;">
+<!-- SUBSCRIBE BANNER -->
+<section class="subscribe-banner">
   <div class="container">
     <div class="subscribe-card">
-      <div class="subscribe-card-image"><i class="fas fa-user"></i></div>
+      <div class="subscribe-card-image"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2022/01/SimonV-5-scaled.jpg" alt="Simon Valentine"></div>
       <div class="subscribe-card-content">
         <h3>Like these articles?</h3>
         <p>Want to see more?</p>
-        <a href="#" class="btn-primary">SUBSCRIBE NOW</a>
+        <a href="https://www.linkedin.com/newsletters/talent-acquisition-6884431755651145728/" target="_blank" class="btn-primary">SUBSCRIBE NOW</a>
       </div>
       <div class="newsletter-ribbon">NEWSLETTER</div>
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
+<!-- FINAL CTA -->
 <section class="final-cta">
   <div class="container">
     <div>
       <span class="section-wave"><svg viewBox="0 0 100 20"><path d="M0 10 Q8 0 16 10 Q24 20 32 10 Q40 0 48 10 Q56 20 64 10 Q72 0 80 10 Q88 20 96 10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span>
       <h2>What are you waiting for?</h2>
     </div>
-    <a href="#community" class="btn-primary">JOIN NOW</a>
+    <a href="https://taex007.wpenginepowered.com/apply/" class="btn-primary">JOIN NOW</a>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo">
-          <span class="logo-icon">ta</span>exchange
-        </div>
+        <a href="https://taex007.wpenginepowered.com/" class="logo"><img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/talogosmallv200.png" alt="TA Exchange"></a>
         <p class="tagline">Leading the way in Talent Acquisition</p>
         <div class="footer-social">
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/company/taexchange" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:contact@ta.exchange"><i class="fas fa-envelope"></i></a>
+          <a href="https://wa.me/41798364078" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div>
         <h4>Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">News &amp; Articles</a></li>
-          <li><a href="#">Testimonials</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/about-us/">About us</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/careers/">Careers</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/articles/">News &amp; Articles</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/testimonials/">Testimonials</a></li>
         </ul>
       </div>
       <div>
         <h4>Other Pages</h4>
         <ul class="footer-links">
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">FAQs</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/help/">Help Center</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/contact-us/">Contact Us</a></li>
+          <li><a href="https://taex007.wpenginepowered.com/faq/">FAQs</a></li>
         </ul>
       </div>
       <div class="footer-network">
         <h4>Global Network</h4>
         <p class="network-desc">Like minded Talent Acquisition Professionals based across the globe.</p>
-        <div class="network-cities">
-          <span>New York</span> &middot;
-          <span>London</span> &middot;
-          <span>Auckland</span> &middot;
-          <span>Geneva</span>
-        </div>
+        <div class="network-cities"><span>New York</span> &middot; <span>London</span> &middot; <span>Auckland</span> &middot; <span>Geneva</span></div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>Copyright &copy; 2023 TA Exchange. All rights reserved.</span>
       <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Condition</a>
+        <a href="https://taex007.wpenginepowered.com/privacy-policy/">Privacy Policy</a>
+        <a href="https://taex007.wpenginepowered.com/terms-of-service/">Terms &amp; Condition</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- ===== JAVASCRIPT ===== -->
 <script>
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+// Smooth scroll for internal anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const t = document.querySelector(href);
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
-
-// Animate skill bars on scroll
-const observerOptions = { threshold: 0.3 };
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
-      entry.target.querySelectorAll('.skill-bar-dot').forEach(dot => {
-        dot.style.left = dot.dataset.left + '%';
-      });
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-const skillSection = document.querySelector('.about-skills');
-if (skillSection) skillObserver.observe(skillSection);
-
-// Animate elements on scroll
-const animateObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.animate-in').forEach(el => {
-  animateObserver.observe(el);
-});
-
-// Animate stat counters
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.stat-number').forEach(stat => {
-        const target = parseInt(stat.textContent);
-        let current = 0;
-        const increment = target / 40;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          stat.textContent = Math.round(current) + '%';
-        }, 30);
-      });
-      statObserver.unobserve(entry.target);
+// Animate skill bars
+const sObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(b => b.style.width = b.dataset.width + '%');
+      e.target.querySelectorAll('.skill-bar-dot').forEach(d => d.style.left = d.dataset.left + '%');
+      sObs.unobserve(e.target);
     }
   });
 }, { threshold: 0.3 });
-
-const statSection = document.querySelector('.stat-row');
-if (statSection) statObserver.observe(statSection);
-
-// Header shadow on scroll
+const sk = document.querySelector('.about-skills');
+if (sk) sObs.observe(sk);
+// Counter animation
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-number').forEach(s => {
+        const t = parseInt(s.textContent); let c = 0; const inc = t / 40;
+        const timer = setInterval(() => { c += inc; if (c >= t) { c = t; clearInterval(timer); } s.textContent = Math.round(c) + '%'; }, 30);
+      });
+      cObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const sr = document.querySelector('.stat-row');
+if (sr) cObs.observe(sr);
+// Header shadow
 window.addEventListener('scroll', () => {
-  const header = document.querySelector('.header');
-  if (window.scrollY > 50) {
-    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-  } else {
-    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.06)';
-  }
+  document.querySelector('.header').style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.1)' : '0 2px 10px rgba(0,0,0,0.06)';
 });
 </script>
-
 </body>
 </html>
