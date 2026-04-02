@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TA Exchange</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Registration-specific styles */
+        body.registration {
+            background-color: #fdf2f2;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .registration-header {
+            background-color: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 40px;
+        }
+
+        .header-logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .header-links a:hover {
+            color: #5B5FC7;
+        }
+
+        /* Main content */
+        .registration-main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Registration card */
+        .registration-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 50px 60px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .registration-card h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .registration-card .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        /* Step indicator */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .step-indicator .current-step {
+            color: #5B5FC7;
+        }
+
+        .step-indicator .arrow {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        /* Form step */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Form field */
+        .form-field {
+            margin-bottom: 25px;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-field label .required {
+            color: #e74c3c;
+        }
+
+        .form-field input[type="text"],
+        .form-field input[type="email"],
+        .form-field input[type="password"],
+        .form-field input[type="url"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-field input[type="text"]:focus,
+        .form-field input[type="email"]:focus,
+        .form-field input[type="password"]:focus,
+        .form-field input[type="url"]:focus {
+            outline: none;
+            border-color: #5B5FC7;
+            box-shadow: 0 0 0 3px rgba(91, 95, 199, 0.1);
+        }
+
+        .form-field input::placeholder {
+            color: #bbb;
+        }
+
+        .form-field .helper-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* Radio button options */
+        .role-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .role-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .role-option:hover {
+            border-color: #5B5FC7;
+            background-color: rgba(91, 95, 199, 0.05);
+        }
+
+        .role-option input[type="radio"] {
+            cursor: pointer;
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: #5B5FC7;
+        }
+
+        .role-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-weight: 400;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin: 30px 0;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #5B5FC7;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* Navigation buttons */
+        .form-navigation {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-prev {
+            background-color: #f5f5f5;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            background-color: #efefef;
+        }
+
+        .btn-next,
+        .btn-submit {
+            background-color: #5B5FC7;
+            color: white;
+        }
+
+        .btn-next:hover:not(:disabled),
+        .btn-submit:hover:not(:disabled) {
+            background-color: #4a4ba5;
+            box-shadow: 0 4px 12px rgba(91, 95, 199, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Error message */
+        .error-message {
+            background-color: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .error-message i {
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        .registration-footer {
+            background-color: white;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .footer-content a {
+            color: #5B5FC7;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading state */
+        .btn-loading {
+            position: relative;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            right: 15px;
+            margin-top: -8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-right-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .registration-header {
+                padding: 15px 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .registration-card {
+                padding: 30px 20px;
+                margin: 0 20px;
+            }
+
+            .header-links {
+                gap: 15px;
+            }
+
+            .registration-main {
+                padding: 20px;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="registration">
+    <!-- Header -->
+    <header class="registration-header">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="https://taex007.wpenginepowered.com/wp-content/uploads/2021/12/talogosmallv200.png" alt="TA Exchange Logo">
+            </div>
+            <div class="header-links">
+                <a href="login.html">Sign in</a>
+                <a href="apply.html">Sign up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="registration-main">
+        <div class="registration-card">
+            <h1>Create Account</h1>
+            <p class="subtitle">Join the TA Exchange community</p>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <span class="current-step" id="stepIndicator">1<span class="arrow">→</span></span>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registrationForm">
+                <!-- Step 1: First Name -->
+                <div class="form-step active" data-step="1">
+                    <div class="form-field">
+                        <label for="firstName">
+                            First Name
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="eg: John Doe"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Step 2: Last Name -->
+                <div class="form-step" data-step="2">
+                    <div class="form-field">
+                        <label for="lastName">
+                            Last Name
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="eg: John Doe"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Step 3: Email -->
+                <div class="form-step" data-step="3">
+                    <div class="form-field">
+                        <label for="email">
+                            Email
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            required
+                        >
+                        <div class="helper-text">Please provide your Email Address</div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Role Selection -->
+                <div class="form-step" data-step="4">
+                    <div class="form-field">
+                        <label>
+                            Role
+                            <span class="required">*</span>
+                        </label>
+                        <div class="role-options">
+                            <div class="role-option">
+                                <input
+                                    type="radio"
+                                    id="roleIC"
+                                    name="role"
+                                    value="Individual Contributor"
+                                    required
+                                >
+                                <label for="roleIC">Individual Contributor</label>
+                            </div>
+                            <div class="role-option">
+                                <input
+                                    type="radio"
+                                    id="roleManager"
+                                    name="role"
+                                    value="Line Manager"
+                                    required
+                                >
+                                <label for="roleManager">Line Manager</label>
+                            </div>
+                            <div class="role-option">
+                                <input
+                                    type="radio"
+                                    id="roleLeader"
+                                    name="role"
+                                    value="Leader"
+                                    required
+                                >
+                                <label for="roleLeader">Leader</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: LinkedIn Profile -->
+                <div class="form-step" data-step="5">
+                    <div class="form-field">
+                        <label for="linkedin">
+                            LinkedIn Profile URL
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="url"
+                            id="linkedin"
+                            name="linkedin"
+                            placeholder="https://www.linkedin.com/in/username/"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Step 6: Password -->
+                <div class="form-step" data-step="6">
+                    <div class="form-field">
+                        <label for="password">
+                            Password
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Minimum 6 characters"
+                            required
+                            minlength="6"
+                        >
+                        <div class="helper-text">Minimum 6 characters</div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-text" id="progressText">0% completed</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button
+                        type="button"
+                        class="btn btn-prev"
+                        id="prevBtn"
+                        style="display: none;"
+                    >
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-next"
+                        id="nextBtn"
+                    >
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-submit"
+                        id="submitBtn"
+                        style="display: none;"
+                    >
+                        Create Account
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="registration-footer">
+        <div class="footer-content">
+            © 2026 - Talent Acquisition Exchange
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Multi-step form logic
+        const registrationForm = document.getElementById('registrationForm');
+        const formSteps = document.querySelectorAll('.form-step');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const stepIndicator = document.getElementById('stepIndicator');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+
+        const totalSteps = formSteps.length;
+        let currentStep = 1;
+
+        // Required fields by step
+        const requiredFields = {
+            1: ['firstName'],
+            2: ['lastName'],
+            3: ['email'],
+            4: ['role'],
+            5: ['linkedin'],
+            6: ['password']
+        };
+
+        // Initialize form
+        function init() {
+            // Check if already logged in
+            if (typeof TAAuth !== 'undefined' && TAAuth.isLoggedIn && TAAuth.isLoggedIn()) {
+                window.location.href = 'groups.html';
+                return;
+            }
+
+            showStep(currentStep);
+            updateNavigation();
+        }
+
+        // Show specific step
+        function showStep(stepNum) {
+            formSteps.forEach((step, index) => {
+                step.classList.remove('active');
+                if (index === stepNum - 1) {
+                    step.classList.add('active');
+                }
+            });
+
+            // Update step indicator
+            const arrow = stepNum < totalSteps ? '→' : '';
+            stepIndicator.innerHTML = `${stepNum}<span class="arrow">${arrow}</span>`;
+
+            // Update progress
+            const progress = Math.round((stepNum / totalSteps) * 100);
+            progressFill.style.width = progress + '%';
+            progressText.textContent = progress + '% completed';
+
+            currentStep = stepNum;
+        }
+
+        // Update button visibility
+        function updateNavigation() {
+            prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
+            nextBtn.style.display = currentStep === totalSteps ? 'none' : 'block';
+            submitBtn.style.display = currentStep === totalSteps ? 'block' : 'none';
+        }
+
+        // Validate current step
+        function validateStep(stepNum) {
+            const fields = requiredFields[stepNum];
+
+            for (let fieldName of fields) {
+                const field = document.getElementById(fieldName);
+
+                if (!field) continue;
+
+                // Handle radio buttons
+                if (field.type === 'radio') {
+                    const checked = document.querySelector(`input[name="${fieldName}"]:checked`);
+                    if (!checked) {
+                        showError('Please select a role');
+                        return false;
+                    }
+                } else {
+                    // Handle regular inputs
+                    if (!field.value.trim()) {
+                        showError(`${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`);
+                        return false;
+                    }
+
+                    // Email validation
+                    if (fieldName === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(field.value)) {
+                            showError('Please enter a valid email address');
+                            return false;
+                        }
+                    }
+
+                    // Password validation
+                    if (fieldName === 'password') {
+                        if (field.value.length < 6) {
+                            showError('Password must be at least 6 characters');
+                            return false;
+                        }
+                    }
+
+                    // URL validation
+                    if (fieldName === 'linkedin') {
+                        const urlRegex = /^https?:\/\/.+/;
+                        if (!urlRegex.test(field.value)) {
+                            showError('Please enter a valid URL');
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            hideError();
+            return true;
+        }
+
+        // Show error message
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.add('show');
+        }
+
+        // Hide error message
+        function hideError() {
+            errorMessage.classList.remove('show');
+        }
+
+        // Navigate to next step
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    showStep(currentStep + 1);
+                    updateNavigation();
+                }
+            }
+        }
+
+        // Navigate to previous step
+        function prevStep() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+                updateNavigation();
+            }
+            hideError();
+        }
+
+        // Handle form submission
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (!validateStep(currentStep)) {
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                role: document.querySelector('input[name="role"]:checked').value,
+                linkedin: document.getElementById('linkedin').value.trim(),
+                password: document.getElementById('password').value
+            };
+
+            // Show loading state
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+
+            if (typeof TAAuth !== 'undefined' && TAAuth.register) {
+                const result = TAAuth.register(formData);
+                if (result.success) {
+                    window.location.href = 'groups.html';
+                } else {
+                    showError(result.error || 'An error occurred. Please try again.');
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.disabled = false;
+                }
+            } else {
+                showError('Authentication service not available.');
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextStep);
+        prevBtn.addEventListener('click', prevStep);
+
+        // Allow Enter key to go to next step (except in last step)
+        registrationForm.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && currentStep < totalSteps) {
+                e.preventDefault();
+                nextStep();
+            }
+        });
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>

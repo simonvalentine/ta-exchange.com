@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TA Exchange</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);">
+        <div class="container">
+            <h1 class="hero-title" style="color: white;">Frequently Asked Questions</h1>
+            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9);">Find answers to common questions about TA Exchange</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is TA Exchange?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>TA Exchange is a vibrant community dedicated exclusively to talent acquisition professionals. We provide a platform for recruiters, HR leaders, and talent acquisition specialists to connect, collaborate, and grow together. Our community offers access to exclusive resources, networking opportunities, industry insights, and professional development to help you excel in your TA career.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I join TA Exchange?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Joining TA Exchange is simple! Click the "Apply Now" button on our website to start the membership process. You'll need to fill out an application form with your professional details and information about your interest in TA. Our team will review your application, and you'll be notified once approved. Upon approval, you can create your account and start engaging with our community immediately.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is TA Exchange free?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>TA Exchange offers different membership tiers to suit various needs and budgets. We have a Free tier that gives you access to basic community features, webinars, and networking opportunities. Premium membership tiers unlock additional benefits such as exclusive content, advanced networking tools, one-on-one mentorship opportunities, and priority access to special events and workshops. Choose the tier that best fits your professional goals.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What groups are available?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="groups-list">
+                            <p>TA Exchange features six specialized groups tailored to different aspects of talent acquisition:</p>
+                            <ul>
+                                <li><strong>Executive Recruitment:</strong> For senior-level recruiting strategies and leadership roles</li>
+                                <li><strong>Technology Talent:</strong> Focused on recruiting for tech and software development roles</li>
+                                <li><strong>Diversity & Inclusion:</strong> Dedicated to building diverse teams and inclusive hiring practices</li>
+                                <li><strong>Campus & Graduate Recruiting:</strong> For early-career talent acquisition and university partnerships</li>
+                                <li><strong>Employer Branding:</strong> Focused on building and maintaining your organization's employment brand</li>
+                                <li><strong>Global Recruitment:</strong> For international and cross-border talent acquisition strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do webinars work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We host monthly webinars featuring industry experts, thought leaders, and seasoned TA professionals sharing insights on trending topics and best practices. Webinars are exclusively available to TA Exchange members. Each month we announce the upcoming webinar topics, and members receive invitations with registration details. Webinars are typically 60 minutes with a presentation followed by a Q&A session. Members who can't attend live can access the recordings afterward.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I cancel my membership?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely! You can cancel your membership at any time, no questions asked. We believe in flexibility and want you to engage with TA Exchange on your own terms. To cancel, simply log into your account settings and follow the cancellation process. If you cancel a paid membership, your access continues until the end of your billing period. We'd love to hear feedback about why you're leaving so we can continue improving our community.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I contact support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We're here to help! You can reach our support team at <a href="mailto:contact@ta.exchange">contact@ta.exchange</a>. We typically respond to support inquiries within 24-48 hours. You can also visit our Contact Us page to send a message directly, and our team will get back to you as soon as possible. For urgent matters, please mention "URGENT" in your subject line.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('header').innerHTML = renderHeader('faq');
+        document.getElementById('footer').innerHTML = renderFooter();
+
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            if (isActive) {
+                faqItem.classList.remove('active');
+            } else {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+
+    <style>
+        .hero-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .faq-section {
+            padding: 80px 20px;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 25px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background-color: #f9fafb;
+        }
+
+        .faq-question i {
+            color: #7c3aed;
+            transition: transform 0.3s ease;
+            font-size: 18px;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: #f3f0ff;
+            color: #7c3aed;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 800px;
+        }
+
+        .faq-answer p {
+            padding: 0 25px 25px 25px;
+            margin: 0;
+            color: #6b7280;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-answer a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        .groups-list {
+            padding: 0 25px 25px 25px;
+        }
+
+        .groups-list p {
+            margin: 0 0 15px 0;
+            color: #6b7280;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .groups-list ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .groups-list li {
+            margin-bottom: 12px;
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .groups-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        .groups-list strong {
+            color: #1f2937;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .faq-question {
+                padding: 20px;
+                font-size: 15px;
+            }
+
+            .faq-answer p {
+                padding: 0 20px 20px 20px;
+            }
+
+            .groups-list {
+                padding: 0 20px 20px 20px;
+            }
+        }
+    </style>
+</body>
+</html>

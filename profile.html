@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Profile - TA Exchange</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        main {
+            min-height: calc(100vh - 200px);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            border-radius: 12px;
+            padding: 40px;
+            color: white;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            flex-shrink: 0;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-title {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .role-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #6d28d9;
+        }
+
+        .btn-primary:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Tabs */
+        .tabs-navigation {
+            display: flex;
+            gap: 30px;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-link {
+            padding: 12px 0;
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .tab-link:hover {
+            color: #333;
+        }
+
+        .tab-link.active {
+            color: #6d28d9;
+            border-bottom-color: #6d28d9;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Tab */
+        .about-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .about-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .about-item {
+            margin-bottom: 20px;
+        }
+
+        .about-item label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .about-item p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .about-item a {
+            color: #6d28d9;
+            text-decoration: none;
+        }
+
+        .about-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Edit Form */
+        .edit-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6d28d9;
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-save, .btn-cancel {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-save {
+            background: #6d28d9;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #5b21b6;
+        }
+
+        .btn-cancel {
+            background: #e5e7eb;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background: #d1d5db;
+        }
+
+        /* Activity Tab */
+        .post-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .post-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .post-meta {
+            flex: 1;
+        }
+
+        .post-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .post-author a {
+            color: #6d28d9;
+            text-decoration: none;
+        }
+
+        .post-author a:hover {
+            text-decoration: underline;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .post-group {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6d28d9;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 6px;
+        }
+
+        .post-content {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .post-action:hover {
+            color: #6d28d9;
+        }
+
+        .post-action i {
+            font-size: 14px;
+        }
+
+        /* Groups/Connections Grid */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .card-btn {
+            background: #6d28d9;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .card-btn:hover {
+            background: #5b21b6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                padding: 25px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-info {
+                width: 100%;
+            }
+
+            .profile-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tabs-navigation {
+                gap: 15px;
+            }
+
+            .tab-link {
+                font-size: 13px;
+                padding: 10px 0;
+            }
+
+            .grid-cards {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .profile-title {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-name {
+                font-size: 20px;
+            }
+
+            .tabs-navigation {
+                gap: 10px;
+            }
+
+            .tab-link {
+                font-size: 12px;
+            }
+
+            .profile-header {
+                padding: 20px;
+            }
+
+            .about-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <div class="profile-header">
+            <div class="profile-avatar" id="profileAvatar">👤</div>
+            <div class="profile-info">
+                <h1 class="profile-name" id="profileName">Loading...</h1>
+                <p class="profile-title" id="profileTitle"></p>
+                <span class="role-badge" id="roleBadge">Member</span>
+                <div class="profile-actions" id="profileActions"></div>
+            </div>
+        </div>
+
+        <div class="tabs-navigation">
+            <a href="#about" class="tab-link active" data-tab="about">
+                <i class="fas fa-user"></i> About
+            </a>
+            <a href="#activity" class="tab-link" data-tab="activity">
+                <i class="fas fa-history"></i> Activity
+            </a>
+            <a href="#groups" class="tab-link" data-tab="groups">
+                <i class="fas fa-users"></i> Groups
+            </a>
+            <a href="#connections" class="tab-link" data-tab="connections">
+                <i class="fas fa-link"></i> Connections
+            </a>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about" class="tab-content active">
+            <div class="about-section" id="aboutContent">
+                <h3>Bio</h3>
+                <div id="bioDisplay"></div>
+                <div id="editFormContainer" style="display: none;"></div>
+            </div>
+            <div class="about-section">
+                <h3>Profile Information</h3>
+                <div class="about-item">
+                    <label>Joined Date</label>
+                    <p id="joinedDate"></p>
+                </div>
+                <div class="about-item">
+                    <label>Role</label>
+                    <p id="userRole"></p>
+                </div>
+                <div class="about-item">
+                    <label>LinkedIn</label>
+                    <p id="linkedinLink"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Tab -->
+        <div id="activity" class="tab-content">
+            <div id="activityFeed"></div>
+        </div>
+
+        <!-- Groups Tab -->
+        <div id="groups" class="tab-content">
+            <div class="grid-cards" id="groupsGrid"></div>
+        </div>
+
+        <!-- Connections Tab -->
+        <div id="connections" class="tab-content">
+            <div class="grid-cards" id="connectionsGrid"></div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        let currentUserId = null;
+        let currentUser = null;
+        let isOwnProfile = false;
+
+        function init() {
+            TAAuth.requireAuth();
+
+            const params = new URLSearchParams(window.location.search);
+            const userId = params.get('id');
+
+            const authUser = TAAuth.getCurrentUser();
+            currentUserId = userId || authUser.id;
+            isOwnProfile = currentUserId === authUser.id;
+
+            loadProfile();
+            document.getElementById('header').innerHTML = renderHeader('members');
+            document.getElementById('footer').innerHTML = renderFooter();
+            setupTabSwitching();
+        }
+
+        function loadProfile() {
+            currentUser = TAAuth.getUserById(currentUserId);
+            renderProfile();
+            loadActivity();
+            loadGroups();
+            loadConnections();
+        }
+
+        function renderProfile() {
+            if (!currentUser) return;
+
+            document.getElementById('profileAvatar').innerHTML = avatarHTML(currentUser, 50);
+            document.getElementById('profileName').textContent = currentUser.firstName + ' ' + currentUser.lastName;
+            document.getElementById('profileTitle').textContent = `${currentUser.title} @ ${currentUser.company}`;
+            document.getElementById('roleBadge').textContent = currentUser.role || 'Member';
+            document.getElementById('joinedDate').textContent = new Date(currentUser.joined).toLocaleDateString();
+            document.getElementById('userRole').textContent = currentUser.role || 'Member';
+
+            const linkedinLink = document.getElementById('linkedinLink');
+            if (currentUser.linkedin) {
+                linkedinLink.innerHTML = `<a href="${currentUser.linkedin}" target="_blank"><i class="fab fa-linkedin"></i> View LinkedIn Profile</a>`;
+            } else {
+                linkedinLink.textContent = 'Not provided';
+            }
+
+            const bioDisplay = document.getElementById('bioDisplay');
+            bioDisplay.innerHTML = `<p>${currentUser.bio || 'No bio provided'}</p>`;
+
+            const profileActions = document.getElementById('profileActions');
+            profileActions.innerHTML = '';
+
+            if (isOwnProfile) {
+                const editBtn = document.createElement('button');
+                editBtn.className = 'btn-primary';
+                editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit Profile';
+                editBtn.onclick = showEditForm;
+                profileActions.appendChild(editBtn);
+            }
+        }
+
+        function showEditForm() {
+            const bioDisplay = document.getElementById('bioDisplay');
+            const editFormContainer = document.getElementById('editFormContainer');
+
+            bioDisplay.style.display = 'none';
+            editFormContainer.style.display = 'block';
+
+            editFormContainer.innerHTML = `
+                <div class="edit-form">
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="editBio" placeholder="Tell us about yourself...">${currentUser.bio || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" id="editCompany" value="${currentUser.company || ''}" placeholder="Your company name">
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="editTitle" value="${currentUser.title || ''}" placeholder="Your job title">
+                    </div>
+                    <div class="form-group">
+                        <label>LinkedIn Profile URL</label>
+                        <input type="url" id="editLinkedin" value="${currentUser.linkedin || ''}" placeholder="https://linkedin.com/in/...">
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-save" onclick="saveProfile()"><i class="fas fa-save"></i> Save Changes</button>
+                        <button class="btn-cancel" onclick="cancelEdit()">Cancel</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function cancelEdit() {
+            document.getElementById('bioDisplay').style.display = 'block';
+            document.getElementById('editFormContainer').style.display = 'none';
+        }
+
+        function saveProfile() {
+            const updates = {
+                bio: document.getElementById('editBio').value,
+                company: document.getElementById('editCompany').value,
+                title: document.getElementById('editTitle').value,
+                linkedin: document.getElementById('editLinkedin').value
+            };
+
+            TAAuth.updateProfile(currentUserId, updates);
+            Object.assign(currentUser, updates);
+            cancelEdit();
+            renderProfile();
+        }
+
+        function loadActivity() {
+            const activityFeed = document.getElementById('activityFeed');
+
+            const allPosts = TAActivity.getItems();
+            const userPosts = allPosts.filter(post => post.userId === currentUserId);
+
+            if (userPosts.length === 0) {
+                activityFeed.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No activity yet</p>';
+                return;
+            }
+
+            activityFeed.innerHTML = userPosts.map(post => {
+                const group = TAGroups.find(g => g.id === post.group);
+                const groupName = group ? group.name : null;
+                return `
+                    <div class="post-item">
+                        <div class="post-header">
+                            <div class="post-avatar">${avatarHTML(currentUser, 18)}</div>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <a href="profile.html?id=${post.userId}">${currentUser.firstName + ' ' + currentUser.lastName}</a>
+                                </div>
+                                <div class="post-time">${timeAgo(post.timestamp)}</div>
+                                ${groupName ? `<div class="post-group">${groupName}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="post-content">${post.content}</div>
+                        <div class="post-actions">
+                            <div class="post-action" onclick="likePost('${post.id}')">
+                                <i class="far fa-heart"></i>
+                                <span>${post.likes || 0}</span>
+                            </div>
+                            <div class="post-action">
+                                <i class="far fa-comment"></i>
+                                <span>${post.comments ? post.comments.length : 0}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function loadGroups() {
+            const groupsGrid = document.getElementById('groupsGrid');
+
+            const groupIds = currentUser.groups || [];
+            if (groupIds.length === 0) {
+                groupsGrid.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Not a member of any groups yet</p>';
+                return;
+            }
+
+            const userGroups = groupIds.map(gid => TAGroups.find(g => g.id === gid)).filter(Boolean);
+
+            groupsGrid.innerHTML = userGroups.map(group => `
+                <div class="card">
+                    <div class="card-avatar" style="font-size: 40px;">🎯</div>
+                    <div class="card-title">${group.name}</div>
+                    <div class="card-subtitle">${group.memberCount || 0} members</div>
+                    <a href="group.html?id=${group.id}" class="card-btn">View Group</a>
+                </div>
+            `).join('');
+        }
+
+        function loadConnections() {
+            const connectionsGrid = document.getElementById('connectionsGrid');
+
+            const connectionIds = currentUser.connections || [];
+            if (connectionIds.length === 0) {
+                connectionsGrid.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No connections yet</p>';
+                return;
+            }
+
+            const allMembers = TAAuth.getAllMembers();
+            const connectedMembers = allMembers.filter(m => connectionIds.includes(m.id));
+
+            connectionsGrid.innerHTML = connectedMembers.map(member => `
+                <div class="card">
+                    <div class="card-avatar">${avatarHTML(member, 32)}</div>
+                    <div class="card-title">${member.firstName + ' ' + member.lastName}</div>
+                    <div class="card-subtitle">${member.title}</div>
+                    <a href="profile.html?id=${member.id}" class="card-btn">View Profile</a>
+                </div>
+            `).join('');
+        }
+
+        function setupTabSwitching() {
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                    link.classList.add('active');
+                    const tabId = link.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        }
+
+        function likePost(postId) {
+            TAActivity.likePost(postId);
+            loadActivity();
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group - TA Exchange</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .group-hero {
+            position: relative;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+
+        .group-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .group-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .group-hero-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .group-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .group-hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .group-hero-stats {
+            display: flex;
+            gap: 30px;
+            font-size: 14px;
+        }
+
+        .group-hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Main Layout */
+        .group-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+        }
+
+        /* Compose Box */
+        .compose-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .compose-box-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .compose-box-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .compose-box-input {
+            flex: 1;
+        }
+
+        .compose-box-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s ease;
+        }
+
+        .compose-box-textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .compose-box-footer {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .post {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .post:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .post-author-info {
+            flex: 1;
+        }
+
+        .post-author-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 14px;
+        }
+
+        .post-timestamp {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .post-content {
+            margin: 12px 0;
+            color: #333;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .post-footer {
+            display: flex;
+            gap: 20px;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .post-action:hover {
+            color: #8b5cf6;
+        }
+
+        .post-action i {
+            font-size: 14px;
+        }
+
+        .post-action.liked {
+            color: #d946ef;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        /* Group Info Card */
+        .group-info {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item i {
+            color: #8b5cf6;
+            width: 16px;
+        }
+
+        /* Members Card */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .member-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .member-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Related Groups Card */
+        .related-group {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+        }
+
+        .related-group:last-child {
+            border-bottom: none;
+        }
+
+        .related-group a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .related-group a:hover {
+            text-decoration: underline;
+        }
+
+        .related-group-meta {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Empty State */
+        .empty-feed {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .empty-feed i {
+            font-size: 48px;
+            color: #d0d0d0;
+            margin-bottom: 16px;
+        }
+
+        .empty-feed h3 {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .empty-feed p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .group-container {
+                grid-template-columns: 1fr;
+            }
+
+            .group-hero h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .group-hero {
+                height: 200px;
+                padding: 30px 20px;
+            }
+
+            .group-hero h1 {
+                font-size: 24px;
+            }
+
+            .group-hero-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <!-- Group Hero Section -->
+    <div class="group-hero" id="groupHero">
+        <div class="group-hero-content">
+            <span class="group-hero-tag" id="groupTag"></span>
+            <h1 id="groupName"></h1>
+            <div class="group-hero-stats">
+                <div class="group-hero-stat">
+                    <i class="fas fa-users"></i>
+                    <span id="groupMembers"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="group-container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Compose Box -->
+            <div class="compose-box">
+                <div class="compose-box-header">
+                    <div class="compose-box-avatar" id="currentUserAvatar">Y</div>
+                    <div class="compose-box-input">
+                        <textarea class="compose-box-textarea" id="composeTextarea" placeholder="Share your thoughts with the group..."></textarea>
+                        <div class="compose-box-footer">
+                            <button class="btn-submit" id="submitBtn">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="activity-feed" id="activityFeed"></div>
+
+            <!-- Empty State -->
+            <div class="empty-feed" id="emptyFeed" style="display: none;">
+                <i class="fas fa-comments"></i>
+                <h3>No posts yet</h3>
+                <p>Be the first to start a conversation in this group</p>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Group Info Card -->
+            <div class="card">
+                <h3>About</h3>
+                <div class="group-info">
+                    <div id="groupDescription"></div>
+                    <div class="info-item" style="margin-top: 16px;">
+                        <i class="fas fa-calendar"></i>
+                        <span>Created <span id="createdDate"></span></span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-users"></i>
+                        <span id="memberCountDetail"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Members Card -->
+            <div class="card">
+                <h3>Members</h3>
+                <div class="members-grid" id="membersGrid"></div>
+            </div>
+
+            <!-- Related Groups Card -->
+            <div class="card">
+                <h3>Related Groups</h3>
+                <div id="relatedGroupsContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        let currentGroup = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Require authentication
+            TAAuth.requireAuth();
+
+            // Render header and footer
+            document.getElementById('header-container').innerHTML = renderHeader('groups');
+            document.getElementById('footer-container').innerHTML = renderFooter();
+
+            // Get group ID from URL
+            const params = new URLSearchParams(window.location.search);
+            const groupId = params.get('id');
+
+            if (!groupId) {
+                window.location.href = 'groups.html';
+                return;
+            }
+
+            // Find group in TAGroups
+            currentGroup = window.TAGroups.find(g => g.id == groupId);
+
+            if (!currentGroup) {
+                window.location.href = 'groups.html';
+                return;
+            }
+
+            // Render group details
+            renderGroupDetails();
+            renderActivityFeed();
+
+            // Setup event listeners
+            document.getElementById('submitBtn').addEventListener('click', submitPost);
+            document.getElementById('composeTextarea').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                    submitPost();
+                }
+            });
+        });
+
+        function renderGroupDetails() {
+            // Hero section
+            document.getElementById('groupHero').style.backgroundImage = `url('${currentGroup.image}')`;
+            document.getElementById('groupTag').textContent = currentGroup.tag;
+            document.getElementById('groupName').textContent = currentGroup.name;
+            document.getElementById('groupMembers').textContent = currentGroup.memberCount + ' Members';
+
+            // About section
+            document.getElementById('groupDescription').textContent = currentGroup.description;
+            document.getElementById('createdDate').textContent = currentGroup.created || 'some time ago';
+            document.getElementById('memberCountDetail').textContent = currentGroup.memberCount + ' members';
+
+            // Members (show first 9)
+            const membersGrid = document.getElementById('membersGrid');
+            const allUsers = TAAuth.getAllMembers();
+            const displayMembers = allUsers.slice(0, 9);
+            membersGrid.innerHTML = displayMembers.map(member => `
+                <div class="member-avatar" title="${member.firstName + ' ' + member.lastName}">
+                    ${(member.firstName + ' ' + member.lastName).substring(0, 2).toUpperCase()}
+                </div>
+            `).join('');
+
+            // Related groups (exclude current group)
+            const relatedGroups = window.TAGroups.filter(g => g.id !== currentGroup.id).slice(0, 3);
+            const relatedContainer = document.getElementById('relatedGroupsContainer');
+            if (relatedGroups.length === 0) {
+                relatedContainer.innerHTML = '<p style="color: #999; font-size: 14px;">No related groups</p>';
+            } else {
+                relatedContainer.innerHTML = relatedGroups.map(group => `
+                    <div class="related-group">
+                        <a href="group.html?id=${group.id}">${group.name}</a>
+                        <div class="related-group-meta">${group.memberCount} members</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderActivityFeed() {
+            // Filter activity for this group
+            const allActivity = TAActivity.getItems();
+            const groupActivity = allActivity.filter(post => post.group == currentGroup.id);
+            const feed = document.getElementById('activityFeed');
+            const emptyFeed = document.getElementById('emptyFeed');
+
+            if (groupActivity.length === 0) {
+                feed.style.display = 'none';
+                emptyFeed.style.display = 'block';
+                return;
+            }
+
+            feed.style.display = 'flex';
+            emptyFeed.style.display = 'none';
+
+            feed.innerHTML = groupActivity.map(post => {
+                const user = TAAuth.getUserById(post.userId);
+                const userName = user ? user.firstName + ' ' + user.lastName : 'Unknown';
+                return `
+                <div class="post" data-post-id="${post.id}">
+                    <div class="post-header">
+                        <div class="post-avatar">${userName.substring(0, 2).toUpperCase()}</div>
+                        <div class="post-author-info">
+                            <div class="post-author-name">${userName}</div>
+                            <div class="post-timestamp">${timeAgo(post.timestamp)}</div>
+                        </div>
+                    </div>
+                    <div class="post-content">${post.content}</div>
+                    <div class="post-footer">
+                        <div class="post-action like-btn" onclick="toggleLike(this, '${post.id}')">
+                            <i class="fas fa-heart"></i>
+                            <span>${post.likes || 0} Likes</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="fas fa-comment"></i>
+                            <span>${post.comments ? post.comments.length : 0} Replies</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        function submitPost() {
+            const textarea = document.getElementById('composeTextarea');
+            const content = textarea.value.trim();
+
+            if (!content) return;
+
+            // Add post (this would call TAActivity.addPost() if it exists)
+            if (window.TAActivity && typeof window.TAActivity.addPost === 'function') {
+                window.TAActivity.addPost({
+                    groupId: currentGroup.id,
+                    content: content,
+                    author: 'You',
+                    timestamp: new Date(),
+                    likes: 0,
+                    replies: 0
+                });
+            } else {
+                // Fallback: add to TAActivity array
+                if (!window.TAActivity) window.TAActivity = [];
+                window.TAActivity.unshift({
+                    id: 'post_' + Date.now(),
+                    groupId: currentGroup.id,
+                    content: content,
+                    author: 'You',
+                    timestamp: new Date(),
+                    likes: 0,
+                    replies: 0
+                });
+            }
+
+            textarea.value = '';
+            renderActivityFeed();
+        }
+
+        function toggleLike(btn, postId) {
+            btn.classList.toggle('liked');
+            const likeSpan = btn.querySelector('span');
+            const currentLikes = parseInt(likeSpan.textContent);
+            
+            if (btn.classList.contains('liked')) {
+                likeSpan.textContent = (currentLikes + 1) + ' Likes';
+                if (window.TAActivity && typeof window.TAActivity.likePost === 'function') {
+                    window.TAActivity.likePost(postId);
+                }
+            } else {
+                likeSpan.textContent = Math.max(0, currentLikes - 1) + ' Likes';
+            }
+        }
+
+    </script>
+</body>
+</html>

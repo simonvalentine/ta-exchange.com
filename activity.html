@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Feed - TA Exchange</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        main {
+            min-height: calc(100vh - 200px);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Page Header */
+        .page-hero {
+            margin-bottom: 40px;
+        }
+
+        .page-hero h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .page-hero p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Two-Column Layout */
+        .activity-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+        }
+
+        /* Compose Box */
+        .compose-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 25px;
+        }
+
+        .compose-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .compose-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .compose-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .compose-textarea:focus {
+            outline: none;
+            border-color: #6d28d9;
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+        }
+
+        .compose-footer {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .compose-select {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .compose-select:focus {
+            outline: none;
+            border-color: #6d28d9;
+        }
+
+        .btn-post {
+            margin-left: auto;
+            background: #6d28d9;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-post:hover {
+            background: #5b21b6;
+            transform: translateY(-2px);
+        }
+
+        .btn-post:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .post-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .post-item:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .post-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .post-meta {
+            flex: 1;
+        }
+
+        .post-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .post-author a {
+            color: #6d28d9;
+            text-decoration: none;
+        }
+
+        .post-author a:hover {
+            text-decoration: underline;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .post-group {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6d28d9;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .post-content {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .post-action:hover {
+            color: #6d28d9;
+        }
+
+        .post-action i {
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .sidebar-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-item a {
+            color: #6d28d9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .sidebar-item a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar-item span {
+            color: #999;
+            float: right;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #666;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #333;
+            font-size: 16px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            color: #d1d5db;
+            margin-bottom: 15px;
+        }
+
+        .empty-state p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .activity-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            .page-hero h1 {
+                font-size: 24px;
+            }
+
+            .activity-container {
+                gap: 20px;
+            }
+
+            .compose-footer {
+                flex-direction: column;
+            }
+
+            .btn-post {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .compose-select {
+                width: 100%;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .post-header {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 15px;
+            }
+
+            .page-hero h1 {
+                font-size: 20px;
+            }
+
+            .compose-box,
+            .post-item,
+            .sidebar-card {
+                padding: 15px;
+            }
+
+            .post-actions {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <div class="page-hero">
+            <h1>Activity Feed</h1>
+            <p>Stay updated with what's happening in the TA community</p>
+        </div>
+
+        <div class="activity-container">
+            <!-- Main Feed -->
+            <div>
+                <!-- Compose Box -->
+                <div class="compose-box">
+                    <div class="compose-header">
+                        <div class="compose-avatar" id="currentUserAvatar">👤</div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 5px;" id="currentUserName">Share something...</h3>
+                        </div>
+                    </div>
+                    <textarea class="compose-textarea" id="postContent" placeholder="What's on your mind? Share insights, ask questions, or engage with the community..."></textarea>
+                    <div class="compose-footer">
+                        <select class="compose-select" id="groupSelect">
+                            <option value="">Select a group (optional)</option>
+                        </select>
+                        <button class="btn-post" id="postButton" onclick="publishPost()">
+                            <i class="fas fa-paper-plane"></i> Post
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="activity-feed" id="activityFeed">
+                    <div class="loading">
+                        <p><i class="fas fa-spinner fa-spin"></i> Loading activity...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Your Groups -->
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-users"></i> Your Groups</h3>
+                    <ul class="sidebar-list" id="yourGroupsList">
+                        <li class="sidebar-item" style="color: #999; padding: 10px 0;">Loading...</li>
+                    </ul>
+                </div>
+
+                <!-- Active Members -->
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-user-circle"></i> Active Members</h3>
+                    <ul class="sidebar-list" id="activeMembersList">
+                        <li class="sidebar-item" style="color: #999; padding: 10px 0;">Loading...</li>
+                    </ul>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-chart-bar"></i> Quick Stats</h3>
+                    <div id="quickStats">
+                        <div class="stat-row">
+                            <span class="stat-label">Total Posts</span>
+                            <span class="stat-value" id="statPosts">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Total Members</span>
+                            <span class="stat-value" id="statMembers">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Active Groups</span>
+                            <span class="stat-value" id="statGroups">0</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        let currentUser = null;
+
+        function init() {
+            TAAuth.requireAuth();
+
+            currentUser = TAAuth.getCurrentUser();
+            document.getElementById('header').innerHTML = renderHeader('activity');
+            document.getElementById('footer').innerHTML = renderFooter();
+
+            displayCurrentUser();
+            loadGroups();
+            loadActivityFeed();
+            loadActiveMembers();
+            loadQuickStats();
+        }
+
+        function displayCurrentUser() {
+            if (!currentUser) return;
+
+            document.getElementById('currentUserAvatar').innerHTML = avatarHTML(currentUser, 18);
+            document.getElementById('currentUserName').textContent = currentUser.firstName + ' ' + currentUser.lastName;
+        }
+
+        function loadGroups() {
+            const groupIds = currentUser.groups || [];
+            const groupSelect = document.getElementById('groupSelect');
+            const yourGroupsList = document.getElementById('yourGroupsList');
+
+            if (groupIds.length === 0) {
+                yourGroupsList.innerHTML = '<li class="sidebar-item" style="color: #999;">No groups yet</li>';
+            } else {
+                const userGroups = groupIds.map(gid => TAGroups.find(g => g.id === gid)).filter(Boolean);
+                yourGroupsList.innerHTML = userGroups.map(group => `
+                    <li class="sidebar-item">
+                        <a href="group.html?id=${group.id}">${group.name}</a>
+                    </li>
+                `).join('');
+
+                groupSelect.innerHTML = '<option value="">Select a group (optional)</option>' +
+                    userGroups.map(group => `<option value="${group.id}">${group.name}</option>`).join('');
+            }
+        }
+
+        function loadActivityFeed() {
+            const activityFeed = document.getElementById('activityFeed');
+
+            const posts = TAActivity.getItems();
+
+            if (!posts || posts.length === 0) {
+                activityFeed.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No activity yet. Be the first to share something!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const sortedPosts = posts.sort((a, b) => b.timestamp - a.timestamp);
+
+            activityFeed.innerHTML = sortedPosts.map(post => {
+                const user = TAAuth.getUserById(post.userId);
+                const userName = user ? user.firstName + ' ' + user.lastName : 'Unknown';
+                const group = TAGroups.find(g => g.id === post.group);
+                const groupName = group ? group.name : null;
+                return `
+                    <div class="post-item">
+                        <div class="post-header">
+                            <div class="post-avatar">${avatarHTML(user, 18)}</div>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <a href="profile.html?id=${post.userId}">${userName}</a>
+                                </div>
+                                <div class="post-time">${timeAgo(post.timestamp)}</div>
+                                ${groupName ? `<div class="post-group">${groupName}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="post-content">${escapeHtml(post.content)}</div>
+                        <div class="post-actions">
+                            <div class="post-action" onclick="likePost('${post.id}')">
+                                <i class="far fa-heart"></i>
+                                <span>${post.likes || 0}</span>
+                            </div>
+                            <div class="post-action">
+                                <i class="far fa-comment"></i>
+                                <span>${post.comments ? post.comments.length : 0}</span>
+                            </div>
+                            <div class="post-action">
+                                <i class="far fa-share"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function loadActiveMembers() {
+            const allMembers = TAAuth.getAllMembers();
+            const activeMembersList = document.getElementById('activeMembersList');
+
+            if (!allMembers || allMembers.length === 0) {
+                activeMembersList.innerHTML = '<li class="sidebar-item" style="color: #999;">No members available</li>';
+                return;
+            }
+
+            const topMembers = allMembers.slice(0, 5);
+            activeMembersList.innerHTML = topMembers.map(member => `
+                <li class="sidebar-item">
+                    <a href="profile.html?id=${member.id}">${member.firstName + ' ' + member.lastName}</a>
+                    <span>${member.role || 'Member'}</span>
+                </li>
+            `).join('');
+        }
+
+        function loadQuickStats() {
+            const allPosts = TAActivity.getItems();
+            const allMembers = TAAuth.getAllMembers();
+
+            document.getElementById('statPosts').textContent = (allPosts || []).length;
+            document.getElementById('statMembers').textContent = (allMembers || []).length;
+
+            const groups = currentUser.groups || [];
+            document.getElementById('statGroups').textContent = groups.length;
+        }
+
+        function publishPost() {
+            const content = document.getElementById('postContent').value.trim();
+            const groupId = document.getElementById('groupSelect').value;
+            const postButton = document.getElementById('postButton');
+
+            if (!content) {
+                alert('Please write something before posting');
+                return;
+            }
+
+            postButton.disabled = true;
+            postButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
+
+            TAActivity.addPost(currentUser.id, groupId || null, content);
+
+            document.getElementById('postContent').value = '';
+            loadActivityFeed();
+            loadQuickStats();
+
+            postButton.disabled = false;
+            postButton.innerHTML = '<i class="fas fa-paper-plane"></i> Post';
+        }
+
+        function likePost(postId) {
+            TAActivity.likePost(postId);
+            loadActivityFeed();
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        init();
+    </script>
+</body>
+</html>
